@@ -33,11 +33,109 @@
     "heroTitle": "Cloudplatformen en AI-systemen die veilig, betrouwbaar en schaalbaar zijn.",
     "heroLead": "[HERO_SUBTEXT]",
     "ctaPrimary": "Plan een gesprek",
-    "ctaSecondary": "Bekijk diensten"
+    "ctaSecondary": "Bekijk diensten",
+    "servicesTitle": "Wat we doen",
+    "servicesLead": "Vijf specialismen die de hele cloud-levenscyclus dekken, van fundament tot AI.",
+    "learnMore": "Lees meer",
+    "cloudsTitle": "Multi-cloud uit ervaring",
+    "cloudsLead": "We werken op alle grote publieke clouds.",
+    "productsTitle": "Onze eigen producten",
+    "productsLead": "Naast advies bouwen we SaaS-producten. De eerste zijn onderweg.",
+    "productsCta": "Bekijk alle producten",
+    "workTitle": "Hoe we werken",
+    "workLead": "Een eenvoudige cyclus die levering voorspelbaar houdt.",
+    "steps": [
+      {
+        "title": "Beoordelen",
+        "body": "We bekijken je huidige situatie, doelen en randvoorwaarden en bepalen wat het zwaarst weegt."
+      },
+      {
+        "title": "Ontwerpen",
+        "body": "We stellen een architectuur en plan voor met duidelijke afwegingen en besluiten."
+      },
+      {
+        "title": "Bouwen",
+        "body": "We implementeren als code, reviewen met je team en documenteren onderweg."
+      },
+      {
+        "title": "Beheren",
+        "body": "We beheren, bewaken en verbeteren het, of dragen het netjes over."
+      }
+    ],
+    "credTitle": "Achtergrond",
+    "credentials": [
+      {
+        "title": "9+ jaar",
+        "body": "Hands-on multi-cloud engineering."
+      },
+      {
+        "title": "AWS DevOps Professional",
+        "body": "Gecertificeerd AWS DevOps Engineer - Professional."
+      },
+      {
+        "title": "Community",
+        "body": "Actief in de AWS-gebruikersgroepen."
+      }
+    ],
+    "ctaTitle": "Vertel wat je aan het bouwen bent",
+    "ctaBody": "Plan een gesprek of stuur een bericht. We reageren binnen [RESPONSE_TIME].",
+    "ctaButton": "Plan een gesprek"
   },
   "notFound": {
     "title": "Pagina niet gevonden",
     "body": "De pagina die je zoekt bestaat niet of is verplaatst.",
     "back": "Terug naar home"
+  },
+  "services": {
+    "title": "Diensten",
+    "description": "Cloud, managed services, DevOps, security en AI-advies van SK LABS.",
+    "lead": "Kies een specialisme, of praat met ons over een combinatie.",
+    "problem": "Het probleem",
+    "whatWeDo": "Wat we doen",
+    "deliverables": "Oplevering",
+    "engagement": "Samenwerkingsvormen",
+    "faq": "Veelgestelde vragen",
+    "assessment": "Assessment",
+    "project": "Project",
+    "retainer": "Retainer",
+    "ctaTitle": "Praat met ons hierover",
+    "ctaBody": "Vertel waar je staat en we stellen een verstandige eerste stap voor.",
+    "ctaButton": "Plan een gesprek",
+    "all": "Alle diensten",
+    "draftNotice": "Deze vertaling is een concept."
+  },
+  "products": {
+    "statusLive": "Live",
+    "statusBeta": "Beta",
+    "statusSoon": "Binnenkort"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Neem contact op met SK LABS over cloud-, DevOps-, security- of AI-projecten.",
+    "lead": "Vertel over je project. We komen snel bij je terug.",
+    "name": "Naam",
+    "company": "Bedrijf",
+    "email": "E-mail",
+    "interest": "Dienst van interesse",
+    "interestPlaceholder": "Kies een dienst",
+    "interestOther": "Iets anders",
+    "budget": "Budgetindicatie",
+    "budgetPlaceholder": "Kies een bereik",
+    "budgets": [
+      "Onder EUR 10k",
+      "EUR 10k - 50k",
+      "EUR 50k - 150k",
+      "Boven EUR 150k",
+      "Nog niet zeker"
+    ],
+    "message": "Bericht",
+    "send": "Verstuur bericht",
+    "required": "Verplicht",
+    "privacy": "We gebruiken je gegevens alleen om te reageren. Lees ons",
+    "privacyLink": "privacybeleid",
+    "directTitle": "Liever mailen of bellen?",
+    "emailLabel": "E-mail",
+    "bookLabel": "Plan een gesprek",
+    "turnstileNote": "Spambescherming volgt met de formulierverwerking."
   }
 }

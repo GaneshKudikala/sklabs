@@ -26,13 +26,13 @@ const legal = [
 ];
 ---
 
-<footer class="border-t border-white/10 bg-ink-900">
+<footer class="border-t border-ink-950/10 bg-ink-100">
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[2fr_1fr_1fr]">
     <div>
-      <a href={localePath(lang)} class="text-white" aria-label="SK LABS">
+      <a href={localePath(lang)} class="text-ink-950" aria-label="SK LABS">
         <Wordmark />
       </a>
-      <p class="mt-4 max-w-sm text-sm text-ink-300">{t.footer.tagline}</p>
+      <p class="mt-4 max-w-sm text-sm text-ink-700">{t.footer.tagline}</p>
     </div>
     <nav aria-label={t.footer.company}>
       <h2 class="text-xs font-semibold uppercase tracking-wider text-ink-500">
@@ -41,7 +41,7 @@ const legal = [
       <ul class="mt-4 space-y-2 text-sm">
         {company.map((l) => (
           <li>
-            <a class="text-ink-300 hover:text-white" href={l.href}>
+            <a class="text-ink-700 hover:text-ink-950" href={l.href}>
               {l.label}
             </a>
           </li>
@@ -53,7 +53,7 @@ const legal = [
       <ul class="mt-4 space-y-2 text-sm">
         {legal.map((l) => (
           <li>
-            <a class="text-ink-300 hover:text-white" href={l.href}>
+            <a class="text-ink-700 hover:text-ink-950" href={l.href}>
               {l.label}
             </a>
           </li>
@@ -61,7 +61,7 @@ const legal = [
       </ul>
     </nav>
   </div>
-  <div class="border-t border-white/10">
+  <div class="border-t border-ink-950/10">
     <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-ink-500 sm:flex-row sm:justify-between sm:px-6">
       <p>
         © {year} SK LABS. {t.footer.rights}

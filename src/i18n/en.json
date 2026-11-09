@@ -33,11 +33,109 @@
     "heroTitle": "Cloud platforms and AI systems that are secure, reliable and ready to scale.",
     "heroLead": "[HERO_SUBTEXT]",
     "ctaPrimary": "Book a call",
-    "ctaSecondary": "Explore services"
+    "ctaSecondary": "Explore services",
+    "servicesTitle": "What we do",
+    "servicesLead": "Five practices that cover the cloud lifecycle, from foundation to AI.",
+    "learnMore": "Learn more",
+    "cloudsTitle": "Multi-cloud by experience",
+    "cloudsLead": "We work across the major public clouds.",
+    "productsTitle": "Our own products",
+    "productsLead": "Alongside consulting we build SaaS products. The first ones are on the way.",
+    "productsCta": "See all products",
+    "workTitle": "How we work",
+    "workLead": "A simple loop that keeps delivery predictable.",
+    "steps": [
+      {
+        "title": "Assess",
+        "body": "We review your current setup, goals and constraints, then agree what matters most."
+      },
+      {
+        "title": "Design",
+        "body": "We propose an architecture and plan with clear trade-offs and decisions."
+      },
+      {
+        "title": "Build",
+        "body": "We implement as code, review with your team and document as we go."
+      },
+      {
+        "title": "Operate",
+        "body": "We run, monitor and improve it, or hand it over cleanly."
+      }
+    ],
+    "credTitle": "Credentials",
+    "credentials": [
+      {
+        "title": "9+ years",
+        "body": "Hands-on multi-cloud engineering."
+      },
+      {
+        "title": "AWS DevOps Professional",
+        "body": "Certified AWS DevOps Engineer - Professional."
+      },
+      {
+        "title": "Community",
+        "body": "Active in the AWS user group community."
+      }
+    ],
+    "ctaTitle": "Tell us what you are building",
+    "ctaBody": "Book a call or send a message. We reply within [RESPONSE_TIME].",
+    "ctaButton": "Book a call"
   },
   "notFound": {
     "title": "Page not found",
     "body": "The page you are looking for does not exist or has moved.",
     "back": "Back to home"
+  },
+  "services": {
+    "title": "Services",
+    "description": "Cloud, managed services, DevOps, security and AI consulting from SK LABS.",
+    "lead": "Pick a practice, or talk to us about a mix.",
+    "problem": "The problem",
+    "whatWeDo": "What we do",
+    "deliverables": "Deliverables",
+    "engagement": "Engagement models",
+    "faq": "Frequently asked questions",
+    "assessment": "Assessment",
+    "project": "Project",
+    "retainer": "Retainer",
+    "ctaTitle": "Talk to us about this",
+    "ctaBody": "Tell us where you are and we will suggest a sensible first step.",
+    "ctaButton": "Book a call",
+    "all": "All services",
+    "draftNotice": "This translation is a draft."
+  },
+  "products": {
+    "statusLive": "Live",
+    "statusBeta": "Beta",
+    "statusSoon": "Coming soon"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contact SK LABS about cloud, DevOps, security or AI projects.",
+    "lead": "Tell us about your project. We will get back to you shortly.",
+    "name": "Name",
+    "company": "Company",
+    "email": "Email",
+    "interest": "Service of interest",
+    "interestPlaceholder": "Select a service",
+    "interestOther": "Something else",
+    "budget": "Budget range",
+    "budgetPlaceholder": "Select a range",
+    "budgets": [
+      "Under EUR 10k",
+      "EUR 10k - 50k",
+      "EUR 50k - 150k",
+      "Over EUR 150k",
+      "Not sure yet"
+    ],
+    "message": "Message",
+    "send": "Send message",
+    "required": "Required",
+    "privacy": "We only use your details to reply to you. Read our",
+    "privacyLink": "privacy policy",
+    "directTitle": "Prefer email or a call?",
+    "emailLabel": "Email",
+    "bookLabel": "Book a call",
+    "turnstileNote": "Spam protection is added with the form handler."
   }
 }
