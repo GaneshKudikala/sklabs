@@ -15,7 +15,8 @@
     "skip": "Ga naar inhoud",
     "language": "Taal",
     "main": "Hoofdnavigatie",
-    "careers": "Werken bij"
+    "jobs": "Vacatures",
+    "hire": "Talent inhuren"
   },
   "footer": {
     "tagline": "Cloud-, DevOps-, security- en AI-engineering. Gebouwd in Nederland.",
@@ -74,13 +75,23 @@
         "body": "Gecertificeerd AWS DevOps Engineer - Professional."
       },
       {
-        "title": "Community",
+        "title": "AWS-community leiderschap",
         "body": "Actief in de AWS-gebruikersgroepen."
       }
     ],
     "ctaTitle": "Vertel wat je aan het bouwen bent",
     "ctaBody": "Plan een gesprek of stuur een bericht. We reageren binnen [RESPONSE_TIME].",
-    "ctaButton": "Plan een gesprek"
+    "ctaButton": "Plan een gesprek",
+    "latestJobs": "Nieuwste vacatures",
+    "latestJobsLead": "Open posities bij onze klanten.",
+    "allJobs": "Alle vacatures",
+    "viewRoles": "Bekijk open vacatures",
+    "splitHireTitle": "Talent nodig? Praat met ons",
+    "splitHireBody": "Cloud-, DevOps-, security- en AI-engineers, gescreend door engineers.",
+    "splitHireButton": "Talent inhuren",
+    "splitJobsTitle": "Op zoek naar een rol?",
+    "splitJobsBody": "Bekijk open vacatures met vooraf de salarisindicatie.",
+    "splitJobsButton": "Bekijk vacatures"
   },
   "notFound": {
     "title": "Pagina niet gevonden",
@@ -152,7 +163,7 @@
     "error": "Er ging iets mis. Probeer het opnieuw of mail ons direct.",
     "captcha": "Voltooi de spamcontrole en probeer het opnieuw.",
     "rateLimited": "Te veel pogingen. Probeer het later opnieuw.",
-    "interestCareers": "Werken bij / sollicitatie"
+    "interestJob": "Sollicitatie"
   },
   "legalUpdated": "Laatst bijgewerkt",
   "insights": {
@@ -180,42 +191,96 @@
     "back": "Alle projecten",
     "readMore": "Lees case study"
   },
-  "careers": {
-    "title": "Werken bij",
-    "description": "Open vacatures en consultantrollen bij klanten met SK LABS.",
-    "lead": "We plaatsen ervaren cloud-, DevOps-, security- en AI-consultants bij klanten en horen graag van goede engineers.",
-    "introTitle": "Werken met SK LABS",
-    "intro": "[CAREERS_INTRO] Vertel waar je goed in bent en waar je de volgende stap wilt zetten.",
+  "jobs": {
+    "title": "Vacatures",
+    "description": "Open cloud-, DevOps-, security- en AI-vacatures in Nederland, vast en op contractbasis bij onze klanten.",
+    "lead": "Cloud-, DevOps-, SRE-, security- en data/AI-rollen bij onze klanten. Bij elke vacature staat de salaris- of tariefindicatie.",
     "openTitle": "Open vacatures",
-    "empty": "Er zijn nu geen open vacatures. Stuur ons je profiel en we nemen contact op als er iets past.",
-    "apply": "Solliciteer",
-    "applySpontaneous": "Stuur je profiel",
+    "empty": "Er zijn nu geen open vacatures. Stuur ons je cv en we nemen contact op als er iets past.",
+    "none": "Geen vacatures gevonden met deze filters.",
+    "applySpontaneous": "Stuur je cv",
     "spontaneousTitle": "Geen passende vacature?",
-    "spontaneousBody": "We plaatsen consultants doorlopend bij klanten. Stuur een korte toelichting op je ervaring.",
-    "location": "Locatie",
-    "workMode": "Werkvorm",
-    "type": "Type",
-    "level": "Niveau",
-    "compensation": "Vergoeding",
-    "posted": "Geplaatst",
-    "responsibilities": "Wat je gaat doen",
-    "requirements": "Wat je meebrengt",
-    "niceToHave": "Mooi meegenomen",
-    "skills": "Vaardigheden",
+    "spontaneousBody": "Stuur ons je cv en we nemen contact op zodra er een passende rol binnenkomt.",
+    "apply": "Solliciteer op deze vacature",
+    "applyBody": "Interesse? Stuur ons je profiel en noem referentie",
+    "applyPrefix": "Sollicitatie voor",
+    "filters": {
+      "title": "Filter vacatures",
+      "search": "Zoeken",
+      "searchPlaceholder": "Trefwoord, vaardigheid of titel",
+      "location": "Locatie",
+      "workModel": "Werkvorm",
+      "type": "Contractvorm",
+      "specialism": "Specialisme",
+      "seniority": "Senioriteit",
+      "all": "Alle",
+      "reset": "Filters wissen",
+      "count": "{n} vacatures getoond"
+    },
+    "facts": {
+      "location": "Locatie",
+      "workModel": "Werkvorm",
+      "type": "Type",
+      "seniority": "Senioriteit",
+      "salary": "Salaris / tarief",
+      "posted": "Geplaatst",
+      "closes": "Sluitingsdatum",
+      "client": "Klant",
+      "reference": "Referentie"
+    },
+    "sections": {
+      "responsibilities": "Wat je gaat doen",
+      "requirements": "Wat je meebrengt",
+      "niceToHave": "Mooi meegenomen",
+      "offered": "Wat we bieden",
+      "recruiter": "Jouw recruiter",
+      "similar": "Vergelijkbare vacatures",
+      "share": "Deel deze vacature"
+    },
+    "closedTitle": "Deze vacature is gesloten",
+    "closedBody": "Deze functie is niet meer open. Bekijk onze andere open vacatures.",
+    "closedCta": "Bekijk open vacatures",
+    "sampleBanner": "Voorbeeldvacature: geen echte vacature. Verborgen op de live site.",
+    "sample": "Voorbeeld",
     "back": "Alle vacatures",
     "readMore": "Bekijk vacature",
-    "applyBody": "Interesse? Stuur ons je profiel en noem deze vacature.",
-    "applyPrefix": "Sollicitatie voor",
+    "shareLinkedIn": "LinkedIn",
+    "shareWhatsApp": "WhatsApp",
+    "shareEmail": "E-mail",
+    "per": {
+      "YEAR": "per jaar",
+      "MONTH": "per maand",
+      "DAY": "per dag",
+      "HOUR": "per uur"
+    },
     "modes": {
       "onsite": "Op locatie",
       "hybrid": "Hybride",
       "remote": "Remote"
     },
     "types": {
-      "contract": "Contract",
-      "permanent": "Vast",
-      "freelance": "Freelance",
-      "interim": "Interim"
+      "FULL_TIME": "Vast",
+      "CONTRACTOR": "Contract / freelance",
+      "PART_TIME": "Parttime"
+    },
+    "levels": {
+      "junior": "Junior",
+      "medior": "Medior",
+      "senior": "Senior",
+      "lead": "Lead"
+    },
+    "specialisms": {
+      "cloud": "Cloud",
+      "devops": "DevOps",
+      "sre": "SRE",
+      "security": "Security",
+      "data-ai": "Data / AI",
+      "other": "Overig"
     }
+  },
+  "hire": {
+    "title": "Talent inhuren",
+    "description": "Huur cloud-, DevOps-, SRE-, security- en data/AI-engineers in Nederland in. Vaste plaatsing, contractspecialisten en teamversterking, gescreend door engineers.",
+    "button": "Deel je vacature met ons"
   }
 }

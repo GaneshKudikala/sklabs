@@ -95,26 +95,37 @@ describe('jobPosting JSON-LD', async () => {
   const base = {
     title: 'Cloud Engineer',
     description: '<p>x</p>',
-    url: 'https://sklabs.nl/en/careers/x/',
+    url: 'https://sklabs.nl/en/jobs/x/',
+    reference: 'SKL-1',
     location: 'Utrecht',
-    workMode: 'hybrid' as const,
-    employmentType: 'contract' as const,
-    posted: new Date('2026-01-02'),
+    country: 'NL',
+    workModel: 'hybrid' as const,
+    employmentType: 'CONTRACTOR' as const,
+    datePosted: new Date('2026-01-02'),
+    validThrough: new Date('2026-03-01'),
+    salaryMin: 70,
+    salaryMax: 90,
+    currency: 'EUR',
+    salaryPeriod: 'HOUR' as const,
     lang: 'en',
   };
-  it('builds a valid posting', () => {
+  it('builds a Google for Jobs posting with salary, dates and identifier', () => {
     const j = jobPosting(base)!;
     expect(j['@type']).toBe('JobPosting');
     expect(j.employmentType).toBe('CONTRACTOR');
     expect(j.datePosted).toBe('2026-01-02');
+    expect(j.validThrough).toBe('2026-03-01');
+    expect(j.baseSalary.value).toMatchObject({ minValue: 70, maxValue: 90, unitText: 'HOUR' });
+    expect(j.identifier.value).toBe('SKL-1');
+    expect(j.jobLocation?.address.addressLocality).toBe('Utrecht');
   });
   it('is skipped while title or location are placeholders', () => {
     expect(jobPosting({ ...base, location: '[LOCATION]' })).toBeNull();
     expect(jobPosting({ ...base, title: '[JOB_TITLE]' })).toBeNull();
   });
-  it('remote roles need no location', () => {
-    expect(
-      jobPosting({ ...base, location: '[LOCATION]', workMode: 'remote' })?.jobLocationType,
-    ).toBe('TELECOMMUTE');
+  it('remote roles use TELECOMMUTE with an applicant country, not a location', () => {
+    const j = jobPosting({ ...base, location: '[LOCATION]', workModel: 'remote' })!;
+    expect(j.jobLocationType).toBe('TELECOMMUTE');
+    expect(j.applicantLocationRequirements).toEqual({ '@type': 'Country', name: 'NL' });
   });
 });

@@ -15,7 +15,8 @@
     "skip": "Skip to content",
     "language": "Language",
     "main": "Main navigation",
-    "careers": "Careers"
+    "jobs": "Jobs",
+    "hire": "Hire Talent"
   },
   "footer": {
     "tagline": "Cloud, DevOps, security and AI engineering. Built in the Netherlands.",
@@ -74,13 +75,23 @@
         "body": "Certified AWS DevOps Engineer - Professional."
       },
       {
-        "title": "Community",
+        "title": "AWS community leadership",
         "body": "Active in the AWS user group community."
       }
     ],
     "ctaTitle": "Tell us what you are building",
     "ctaBody": "Book a call or send a message. We reply within [RESPONSE_TIME].",
-    "ctaButton": "Book a call"
+    "ctaButton": "Book a call",
+    "latestJobs": "Latest roles",
+    "latestJobsLead": "Open positions at our clients.",
+    "allJobs": "See all jobs",
+    "viewRoles": "View open roles",
+    "splitHireTitle": "Hiring? Talk to us",
+    "splitHireBody": "Cloud, DevOps, security and AI engineers, screened by engineers.",
+    "splitHireButton": "Hire talent",
+    "splitJobsTitle": "Looking for a role?",
+    "splitJobsBody": "Browse open roles and see the salary range up front.",
+    "splitJobsButton": "Browse jobs"
   },
   "notFound": {
     "title": "Page not found",
@@ -152,7 +163,7 @@
     "error": "Something went wrong. Please try again or email us directly.",
     "captcha": "Please complete the spam check and try again.",
     "rateLimited": "Too many attempts. Please try again later.",
-    "interestCareers": "Careers / job application"
+    "interestJob": "Job application"
   },
   "legalUpdated": "Last updated",
   "insights": {
@@ -180,42 +191,96 @@
     "back": "All work",
     "readMore": "Read case study"
   },
-  "careers": {
-    "title": "Careers",
-    "description": "Open positions and consultant roles at customer locations with SK LABS.",
-    "lead": "We place experienced cloud, DevOps, security and AI consultants with customers, and we are always interested in hearing from good engineers.",
-    "introTitle": "Work with SK LABS",
-    "intro": "[CAREERS_INTRO] Tell us what you are good at and what you want to work on next.",
-    "openTitle": "Open positions",
-    "empty": "There are no open positions right now. Send us your profile and we will get in touch when something fits.",
-    "apply": "Apply",
-    "applySpontaneous": "Send your profile",
+  "jobs": {
+    "title": "Jobs",
+    "description": "Open cloud, DevOps, security and AI roles in the Netherlands, with permanent and contract positions at our clients.",
+    "lead": "Cloud, DevOps, SRE, security and data/AI roles at our clients. Every role shows its salary or rate range.",
+    "openTitle": "Open roles",
+    "empty": "No open roles right now. Send us your CV and we will get in touch when something fits.",
+    "none": "No roles match these filters.",
+    "applySpontaneous": "Send your CV",
     "spontaneousTitle": "Don't see a fit?",
-    "spontaneousBody": "We place consultants at customer locations on a rolling basis. Send a short note about your experience.",
-    "location": "Location",
-    "workMode": "Work mode",
-    "type": "Type",
-    "level": "Level",
-    "compensation": "Compensation",
-    "posted": "Posted",
-    "responsibilities": "What you will do",
-    "requirements": "What you bring",
-    "niceToHave": "Nice to have",
-    "skills": "Skills",
-    "back": "All positions",
-    "readMore": "View position",
-    "applyBody": "Interested? Send us your profile and mention this position.",
+    "spontaneousBody": "Send us your CV and we will contact you when a matching role comes in.",
+    "apply": "Apply for this role",
+    "applyBody": "Interested? Send us your profile and mention reference",
     "applyPrefix": "Application for",
+    "filters": {
+      "title": "Filter roles",
+      "search": "Search",
+      "searchPlaceholder": "Keyword, skill or title",
+      "location": "Location",
+      "workModel": "Work model",
+      "type": "Employment type",
+      "specialism": "Specialism",
+      "seniority": "Seniority",
+      "all": "All",
+      "reset": "Reset filters",
+      "count": "{n} roles shown"
+    },
+    "facts": {
+      "location": "Location",
+      "workModel": "Work model",
+      "type": "Type",
+      "seniority": "Seniority",
+      "salary": "Salary / rate",
+      "posted": "Posted",
+      "closes": "Closing date",
+      "client": "Client",
+      "reference": "Reference"
+    },
+    "sections": {
+      "responsibilities": "What you will do",
+      "requirements": "What you bring",
+      "niceToHave": "Nice to have",
+      "offered": "What's offered",
+      "recruiter": "Your recruiter",
+      "similar": "Similar roles",
+      "share": "Share this role"
+    },
+    "closedTitle": "This role is closed",
+    "closedBody": "This position is no longer open. Have a look at our other open roles.",
+    "closedCta": "View open roles",
+    "sampleBanner": "Sample role: not a real vacancy. Hidden on the live site.",
+    "sample": "Sample",
+    "back": "All roles",
+    "readMore": "View role",
+    "shareLinkedIn": "LinkedIn",
+    "shareWhatsApp": "WhatsApp",
+    "shareEmail": "Email",
+    "per": {
+      "YEAR": "per year",
+      "MONTH": "per month",
+      "DAY": "per day",
+      "HOUR": "per hour"
+    },
     "modes": {
       "onsite": "On site",
       "hybrid": "Hybrid",
       "remote": "Remote"
     },
     "types": {
-      "contract": "Contract",
-      "permanent": "Permanent",
-      "freelance": "Freelance",
-      "interim": "Interim"
+      "FULL_TIME": "Permanent",
+      "CONTRACTOR": "Contract / freelance",
+      "PART_TIME": "Part-time"
+    },
+    "levels": {
+      "junior": "Junior",
+      "medior": "Medior",
+      "senior": "Senior",
+      "lead": "Lead"
+    },
+    "specialisms": {
+      "cloud": "Cloud",
+      "devops": "DevOps",
+      "sre": "SRE",
+      "security": "Security",
+      "data-ai": "Data / AI",
+      "other": "Other"
     }
+  },
+  "hire": {
+    "title": "Hire Talent",
+    "description": "Hire cloud, DevOps, SRE, security and data/AI engineers in the Netherlands. Permanent placement, contract specialists and team augmentation, screened by engineers.",
+    "button": "Brief us on your role"
   }
 }

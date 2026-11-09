@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Section from '../../../components/Section.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import JobCard from '../../../components/JobCard.astro';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../../i18n';
+import { getJobs } from '../../../i18n/content';
+import { breadcrumbs } from '../../../lib/schema';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const j = t.jobs;
+const jobs = await getJobs(lang);
+const site = Astro.site!.origin;
+const locations = [...new Set(jobs.map((x) => x.data.location))].sort();
+const spontaneous = `${localePath(lang, 'contact')}?job=open-application&title=${encodeURIComponent(j.applySpontaneous)}&prefix=${encodeURIComponent(j.applyPrefix)}`;
+const field =
+  'mt-1 block w-full rounded-md border border-ink-950/20 bg-white px-3 py-2 text-ink-950';
+const label = 'block text-sm font-semibold text-ink-950';
+const enumOptions = (o: Record<string, string>) => Object.entries(o);
+---
+
+<BaseLayout
+  lang={lang}
+  title={j.title}
+  description={j.description}
+  schema={[
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: j.title, url: `${site}${localePath(lang, 'jobs')}` },
+    ]),
+  ]}
+>
+  <PageHeader title={j.title} lead={j.lead} />
+  <Section tone="muted" id="positions" title={j.openTitle}>
+    {jobs.length === 0 ? (
+      <p class="max-w-2xl text-ink-700">{j.empty}</p>
+    ) : (
+      <>
+        <form
+          id="job-filters"
+          role="search"
+          aria-label={j.filters.title}
+          class="mb-8 grid gap-4 rounded-xl border border-ink-950/10 bg-white p-5 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <div class="sm:col-span-2 lg:col-span-3">
+            <label class={label} for="f-q">
+              {j.filters.search}
+            </label>
+            <input class={field} id="f-q" type="search" placeholder={j.filters.searchPlaceholder} />
+          </div>
+          <div>
+            <label class={label} for="f-location">
+              {j.filters.location}
+            </label>
+            <select class={field} id="f-location">
+              <option value="">{j.filters.all}</option>
+              {locations.map((l) => (
+                <option value={l}>{l}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label class={label} for="f-work">
+              {j.filters.workModel}
+            </label>
+            <select class={field} id="f-work">
+              <option value="">{j.filters.all}</option>
+              {enumOptions(j.modes).map(([v, l]) => (
+                <option value={v}>{l}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label class={label} for="f-type">
+              {j.filters.type}
+            </label>
+            <select class={field} id="f-type">
+              <option value="">{j.filters.all}</option>
+              {enumOptions(j.types).map(([v, l]) => (
+                <option value={v}>{l}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label class={label} for="f-specialism">
+              {j.filters.specialism}
+            </label>
+            <select class={field} id="f-specialism">
+              <option value="">{j.filters.all}</option>
+              {enumOptions(j.specialisms).map(([v, l]) => (
+                <option value={v}>{l}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label class={label} for="f-seniority">
+              {j.filters.seniority}
+            </label>
+            <select class={field} id="f-seniority">
+              <option value="">{j.filters.all}</option>
+              {enumOptions(j.levels).map(([v, l]) => (
+                <option value={v}>{l}</option>
+              ))}
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button
+              type="reset"
+              class="rounded-md border border-ink-950/20 px-4 py-2 text-sm font-semibold text-ink-950 hover:bg-ink-950/5"
+            >
+              {j.filters.reset}
+            </button>
+          </div>
+        </form>
+        <p
+          id="job-count"
+          role="status"
+          aria-live="polite"
+          class="mb-4 text-sm text-ink-500"
+          data-template={j.filters.count}
+        >
+          {j.filters.count.replace('{n}', String(jobs.length))}
+        </p>
+        <p id="job-none" hidden class="mb-4 text-ink-700">
+          {j.none}
+        </p>
+        <ul class="grid gap-5 md:grid-cols-2">
+          {jobs.map((x) => (
+            <JobCard lang={lang} slug={x.slug} d={x.data} filterable />
+          ))}
+        </ul>
+        <script src="../../../scripts/job-filters.ts"></script>
+      </>
+    )}
+  </Section>
+  <CtaBand
+    title={j.spontaneousTitle}
+    body={j.spontaneousBody}
+    button={j.applySpontaneous}
+    href={spontaneous}
+  />
+</BaseLayout>

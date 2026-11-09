@@ -1,0 +1,38 @@
+---
+interface Side {
+  title: string;
+  body: string;
+  button: string;
+  href: string;
+}
+interface Props {
+  left: Side;
+  right: Side;
+}
+const { left, right } = Astro.props;
+---
+
+<section>
+  <div class="grid md:grid-cols-2">
+    <div class="bg-ink-950 px-4 py-14 sm:px-10">
+      <h2 class="text-2xl font-bold text-white">{left.title}</h2>
+      <p class="mt-3 max-w-md text-ink-300">{left.body}</p>
+      <a
+        href={left.href}
+        class="mt-6 inline-block rounded-md bg-accent-400 px-6 py-3 font-semibold text-ink-950 hover:bg-accent-500"
+      >
+        {left.button}
+      </a>
+    </div>
+    <div class="bg-accent-400 px-4 py-14 sm:px-10">
+      <h2 class="text-2xl font-bold text-ink-950">{right.title}</h2>
+      <p class="mt-3 max-w-md text-ink-950/80">{right.body}</p>
+      <a
+        href={right.href}
+        class="mt-6 inline-block rounded-md bg-ink-950 px-6 py-3 font-semibold text-white hover:bg-ink-900"
+      >
+        {right.button}
+      </a>
+    </div>
+  </div>
+</section>

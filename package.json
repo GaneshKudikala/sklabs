@@ -18,7 +18,8 @@
     "test": "playwright test",
     "test:unit": "vitest run",
     "dev:functions": "pnpm build && wrangler pages dev dist",
-    "check:functions": "tsc -p functions/tsconfig.json"
+    "check:functions": "tsc -p functions/tsconfig.json",
+    "lint:jobs": "node scripts/lint-jobs.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

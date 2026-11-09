@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Section from '../../../components/Section.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import JobCard from '../../../components/JobCard.astro';
+import Icon from '../../../components/Icon.astro';
+import { locales, localePath, useT, type Lang } from '../../../i18n';
+import { getJobs, formatSalary } from '../../../i18n/content';
+import { breadcrumbs, isPlaceholder, jobPosting } from '../../../lib/schema';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of locales) {
+    const all = await getJobs(lang, { includeClosed: true });
+    for (const job of all) {
+      const similar = all
+        .filter((o) => o.slug !== job.slug && !o.closed)
+        .filter(
+          (o) =>
+            o.data.specialism.some((s) => job.data.specialism.includes(s)) ||
+            o.data.seniority === job.data.seniority,
+        )
+        .slice(0, 3);
+      paths.push({ params: { lang, slug: job.slug }, props: { entry: job, similar } });
+    }
+  }
+  return paths;
+}
+const lang = Astro.params.lang as Lang;
+const { entry, similar } = Astro.props;
+const t = useT(lang);
+const j = t.jobs;
+const d = entry.data;
+const site = Astro.site!.origin;
+const url = `${site}${localePath(lang, `jobs/${entry.slug}`)}`;
+const locale = lang === 'nl' ? 'nl-NL' : 'en-GB';
+const date = (x: Date) => x.toLocaleDateString(locale, { dateStyle: 'long' });
+const salary = formatSalary(d, lang, j.per);
+const applyHref = `${localePath(lang, 'contact')}?job=${encodeURIComponent(entry.slug)}&title=${encodeURIComponent(d.title)}&prefix=${encodeURIComponent(j.applyPrefix)}`;
+const esc = (x: string) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const list = (items: string[]) => `<ul>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
+const posting = entry.closed
+  ? null
+  : jobPosting({
+      title: d.title,
+      description: `<p>${esc(d.summary)}</p>${list(d.responsibilities)}${list(d.requirements)}`,
+      url,
+      reference: d.reference,
+      location: d.location,
+      country: d.country,
+      workModel: d.workModel,
+      employmentType: d.employmentType,
+      datePosted: d.datePosted,
+      validThrough: d.validThrough,
+      salaryMin: d.salaryMin,
+      salaryMax: d.salaryMax,
+      currency: d.currency,
+      salaryPeriod: d.salaryPeriod,
+      lang,
+    });
+const sections = [
+  { title: j.sections.responsibilities, items: d.responsibilities },
+  { title: j.sections.requirements, items: d.requirements },
+  ...(d.niceToHave.length ? [{ title: j.sections.niceToHave, items: d.niceToHave }] : []),
+  ...(d.offered.length ? [{ title: j.sections.offered, items: d.offered }] : []),
+];
+const facts: [string, string][] = [
+  [j.facts.client, d.clientDescriptor],
+  [j.facts.location, d.location],
+  [j.facts.workModel, j.modes[d.workModel]],
+  [j.facts.type, j.types[d.employmentType]],
+  [j.facts.seniority, j.levels[d.seniority]],
+  [j.facts.salary, salary],
+  [j.facts.posted, date(d.datePosted)],
+  ...(d.validThrough ? ([[j.facts.closes, date(d.validThrough)]] as [string, string][]) : []),
+  [j.facts.reference, d.reference],
+];
+const shareText = encodeURIComponent(d.title);
+const shareUrl = encodeURIComponent(url);
+---
+
+<BaseLayout
+  lang={lang}
+  title={d.title}
+  description={d.summary}
+  noindex={entry.closed || d.sample}
+  schema={[
+    ...(posting ? [posting] : []),
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: j.title, url: `${site}${localePath(lang, 'jobs')}` },
+      { name: d.title, url },
+    ]),
+  ]}
+>
+  <PageHeader
+    title={d.title}
+    lead={d.summary}
+    draftNotice={d.draft ? t.services.draftNotice : undefined}
+  />
+  {d.sample && (
+    <p class="bg-accent-400/25 px-4 py-3 text-center text-sm font-semibold text-ink-950">
+      {j.sampleBanner}
+    </p>
+  )}
+  {entry.closed && (
+    <div role="alert" class="bg-ink-950 px-4 py-5 text-center text-white">
+      <p class="text-lg font-bold">{j.closedTitle}</p>
+      <p class="mt-1 text-ink-300">{j.closedBody}</p>
+      <a
+        href={localePath(lang, 'jobs')}
+        class="mt-3 inline-block rounded-md bg-accent-400 px-5 py-2 font-semibold text-ink-950"
+      >
+        {j.closedCta}
+      </a>
+    </div>
+  )}
+  <Section>
+    <a href={localePath(lang, 'jobs')} class="text-sm font-semibold text-accent-600">
+      ← {j.back}
+    </a>
+    <dl class="mt-6 grid max-w-4xl grid-cols-2 gap-4 text-sm sm:grid-cols-3">
+      {facts.map(([k, v]) => (
+        <div>
+          <dt class="text-ink-500">{k}</dt>
+          <dd class="font-semibold text-ink-950">{v}</dd>
+        </div>
+      ))}
+    </dl>
+    {sections.map((s) => (
+      <>
+        <h2 class="mt-10 text-2xl font-bold text-ink-950">{s.title}</h2>
+        <ul class="mt-4 grid gap-3 md:grid-cols-2">
+          {s.items.map((i) => (
+            <li class="flex gap-3 text-ink-700">
+              <Icon name="check" class="mt-0.5 h-5 w-5 shrink-0 text-accent-600" />
+              {i}
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
+    {d.tags.length > 0 && (
+      <p class="mt-8 flex flex-wrap gap-2">
+        {d.tags.map((x) => (
+          <span class="rounded-full border border-ink-950/15 px-3 py-1 text-sm text-ink-700">
+            {x}
+          </span>
+        ))}
+      </p>
+    )}
+
+    <h2 class="mt-10 text-2xl font-bold text-ink-950">{j.sections.recruiter}</h2>
+    <p class="mt-3 text-ink-700">
+      {d.recruiter.name}
+      {!isPlaceholder(d.recruiter.email) && (
+        <>
+          {' '}
+          ·{' '}
+          <a class="font-semibold text-accent-600 underline" href={`mailto:${d.recruiter.email}`}>
+            {d.recruiter.email}
+          </a>
+        </>
+      )}
+    </p>
+
+    <h2 class="mt-10 text-lg font-bold text-ink-950">{j.sections.share}</h2>
+    <ul class="mt-3 flex flex-wrap gap-3 text-sm font-semibold">
+      <li>
+        <a
+          rel="noopener"
+          target="_blank"
+          class="rounded-md border border-ink-950/20 px-3 py-2 text-ink-950 hover:bg-ink-950/5"
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
+        >
+          {j.shareLinkedIn}
+        </a>
+      </li>
+      <li>
+        <a
+          rel="noopener"
+          target="_blank"
+          class="rounded-md border border-ink-950/20 px-3 py-2 text-ink-950 hover:bg-ink-950/5"
+          href={`https://wa.me/?text=${shareText}%20${shareUrl}`}
+        >
+          {j.shareWhatsApp}
+        </a>
+      </li>
+      <li>
+        <a
+          class="rounded-md border border-ink-950/20 px-3 py-2 text-ink-950 hover:bg-ink-950/5"
+          href={`mailto:?subject=${shareText}&body=${shareUrl}`}
+        >
+          {j.shareEmail}
+        </a>
+      </li>
+    </ul>
+  </Section>
+
+  {similar.length > 0 && (
+    <Section tone="muted" title={j.sections.similar}>
+      <ul class="grid gap-5 md:grid-cols-3">
+        {similar.map((s) => (
+          <JobCard lang={lang} slug={s.slug} d={s.data} />
+        ))}
+      </ul>
+    </Section>
+  )}
+  {!entry.closed && (
+    <CtaBand
+      title={j.apply}
+      body={`${j.applyBody} ${d.reference}.`}
+      button={j.apply}
+      href={applyHref}
+    />
+  )}
+</BaseLayout>

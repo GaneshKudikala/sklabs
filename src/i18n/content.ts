@@ -49,12 +49,35 @@ export async function getCaseStudies(lang: Lang) {
 
 const jobFiles = Object.keys(import.meta.glob('/src/content/jobs/**/*.md'));
 
-/** Open, unexpired job postings for a language, newest first. Expiry is evaluated at build time. */
-export async function getJobs(lang: Lang, now = new Date()) {
+/** Sample roles show in dev and when INCLUDE_SAMPLE_JOBS=true (previews, tests); never in production. */
+export const showSampleJobs = () =>
+  import.meta.env.DEV ||
+  (typeof process !== 'undefined' && process.env.INCLUDE_SAMPLE_JOBS === 'true');
+
+export const isJobClosed = (d: { status: string; validThrough?: Date }, now = new Date()) =>
+  d.status === 'closed' || (!!d.validThrough && d.validThrough < now);
+
+/** Jobs for a language, newest first. Each has `closed`. Closed roles are excluded unless includeClosed. */
+export async function getJobs(lang: Lang, opts: { includeClosed?: boolean; now?: Date } = {}) {
   if (jobFiles.length === 0) return [];
+  const now = opts.now ?? new Date();
   const all = await getCollection('jobs', (e) => e.id.startsWith(`${lang}/`));
   return all
-    .filter((e) => e.data.status === 'open' && (!e.data.validThrough || e.data.validThrough >= now))
-    .map((e) => ({ slug: e.id.split('/')[1], ...e }))
-    .sort((a, b) => b.data.posted.valueOf() - a.data.posted.valueOf());
+    .filter((e) => showSampleJobs() || !e.data.sample)
+    .map((e) => ({ slug: e.id.split('/')[1], closed: isJobClosed(e.data, now), ...e }))
+    .filter((e) => opts.includeClosed || !e.closed)
+    .sort((a, b) => b.data.datePosted.valueOf() - a.data.datePosted.valueOf());
+}
+
+export function formatSalary(
+  d: { salaryMin: number; salaryMax: number; currency: string; salaryPeriod: string },
+  lang: Lang,
+  per: Record<string, string>,
+) {
+  const f = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-GB', {
+    style: 'currency',
+    currency: d.currency,
+    maximumFractionDigits: 0,
+  });
+  return `${f.format(d.salaryMin)} - ${f.format(d.salaryMax)} ${per[d.salaryPeriod]}`;
 }

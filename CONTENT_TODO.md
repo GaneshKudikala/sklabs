@@ -33,3 +33,5 @@ All NL files carry `draft: true` and show a "draft translation" notice. For each
 ## Staffing / placement: check before launch
 
 Placing consultants at customer sites can fall under Dutch staffing rules (detachering vs. uitzenden, Wet DBA / false self-employment, ABU/NBBU, WAADI registration, VAR/DBA for freelancers, payrolling). Confirm with an adviser which model you operate, and make the service page and job postings match it. The privacy policy also needs a section on candidate data (CVs and application emails) with a retention period.
+
+- Recruitment registration/licence line in the imprint (planned with the legal pages update) and a candidate-privacy section (4 weeks retention, or 12 months with consent)

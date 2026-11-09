@@ -9,8 +9,18 @@ interface Props {
   image: string;
   ogType?: 'website' | 'article';
   published?: Date;
+  noindex?: boolean;
 }
-const { title, description, lang, pathname, image, ogType = 'website', published } = Astro.props;
+const {
+  title,
+  description,
+  lang,
+  pathname,
+  image,
+  ogType = 'website',
+  published,
+  noindex = false,
+} = Astro.props;
 const site = Astro.site ?? new URL('https://sklabs.nl');
 const rest = stripLocale(pathname);
 const canonical = new URL(pathname, site).href;
@@ -18,6 +28,7 @@ const canonical = new URL(pathname, site).href;
 
 <title>{title}</title>
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
 <link rel="canonical" href={canonical} />
 {locales.map((l) => (
   <link rel="alternate" hreflang={l} href={new URL(localePath(l, rest), site).href} />

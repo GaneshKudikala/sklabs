@@ -67,3 +67,12 @@ test('sitemap lists localized pages', async ({ request }) => {
   expect(map).toContain('https://sklabs.nl/en/services/managed-services/');
   expect(map).toContain('https://sklabs.nl/nl/insights/');
 });
+
+test('sitemap excludes sample and closed job pages but includes the jobs listing', async ({
+  request,
+}) => {
+  const map = await (await request.get('/sitemap-0.xml')).text();
+  expect(map).toContain('https://sklabs.nl/en/jobs/');
+  expect(map).not.toContain('/jobs/senior-aws-devops-engineer/');
+  expect(map).not.toContain('/jobs/closed-platform-engineer/');
+});

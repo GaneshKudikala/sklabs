@@ -2,6 +2,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { excludedJobPaths } from './src/lib/excluded-job-urls.mjs';
+
+const excluded = excludedJobPaths();
 
 export default defineConfig({
   site: 'https://sklabs.nl',
@@ -14,6 +17,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      filter: (page) => !excluded.has(new URL(page).pathname),
       i18n: { defaultLocale: 'en', locales: { en: 'en', nl: 'nl' } },
     }),
   ],
