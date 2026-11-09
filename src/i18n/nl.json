@@ -107,7 +107,17 @@
   "products": {
     "statusLive": "Live",
     "statusBeta": "Beta",
-    "statusSoon": "Binnenkort"
+    "statusSoon": "Binnenkort",
+    "title": "Producten",
+    "description": "SaaS-producten van SK LABS. Binnenkort beschikbaar.",
+    "lead": "Naast advies bouwen we eigen software. Deze producten zijn in ontwikkeling.",
+    "problem": "Het probleem",
+    "features": "Belangrijkste functies",
+    "visit": "Bekijk product",
+    "notify": "Houd me op de hoogte",
+    "back": "Alle producten",
+    "notifyBody": "Vroege toegang of updates? Neem contact op.",
+    "draftNotice": "Deze vertaling is een concept."
   },
   "contact": {
     "title": "Contact",
@@ -141,5 +151,6 @@
     "error": "Er ging iets mis. Probeer het opnieuw of mail ons direct.",
     "captcha": "Voltooi de spamcontrole en probeer het opnieuw.",
     "rateLimited": "Te veel pogingen. Probeer het later opnieuw."
-  }
+  },
+  "legalUpdated": "Laatst bijgewerkt"
 }
