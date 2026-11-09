@@ -10,3 +10,10 @@ Every `[PLACEHOLDER]` that needs real content. Updated each milestone.
 | `[KVK]`, `[VAT]`, `[ADDRESS]`               | Imprint (M4)                                    | Company registration details                          |
 | Logo                                        | `src/components/Wordmark.astro`                 | Placeholder SVG wordmark                              |
 | NL copy                                     | All `nl` content                                | Machine-drafted, marked `draft: true` for review (M6) |
+
+## Setup tasks (not content)
+
+- Create a Resend account, verify sklabs.nl, create `RESEND_API_KEY`
+- Create a Cloudflare Turnstile widget for sklabs.nl: set `PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET`
+- Set `CONTACT_TO_EMAIL` (and optionally `CONTACT_FROM_EMAIL`) in Cloudflare Pages
+- Optional: create a KV namespace bound as `RATE_LIMIT`, and a WAF rate-limit rule on `/api/contact`

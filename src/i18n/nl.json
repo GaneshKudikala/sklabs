@@ -136,6 +136,10 @@
     "directTitle": "Liever mailen of bellen?",
     "emailLabel": "E-mail",
     "bookLabel": "Plan een gesprek",
-    "turnstileNote": "Spambescherming volgt met de formulierverwerking."
+    "sending": "Verzenden...",
+    "success": "Bedankt. Je bericht is verzonden en we reageren snel.",
+    "error": "Er ging iets mis. Probeer het opnieuw of mail ons direct.",
+    "captcha": "Voltooi de spamcontrole en probeer het opnieuw.",
+    "rateLimited": "Te veel pogingen. Probeer het later opnieuw."
   }
 }

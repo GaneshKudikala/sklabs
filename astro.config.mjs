@@ -17,5 +17,5 @@ export default defineConfig({
       i18n: { defaultLocale: 'en', locales: { en: 'en', nl: 'nl' } },
     }),
   ],
-  vite: { plugins: [tailwindcss()] },
+  vite: { plugins: [tailwindcss()], build: { assetsInlineLimit: 0 } },
 });

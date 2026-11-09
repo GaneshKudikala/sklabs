@@ -23,9 +23,22 @@ First run of the tests needs `pnpm exec playwright install chromium`.
 - `src/content/` content collections (added in M2+)
 - `public/_headers`, `public/_redirects` Cloudflare security headers and root redirect
 
+## Contact form
+
+`functions/api/contact.ts` (Cloudflare Pages Function) validates input with zod, checks a honeypot, verifies Cloudflare Turnstile, rate-limits per IP (5 per 10 min; uses the optional `RATE_LIMIT` KV binding when present, otherwise per-isolate memory, so also add a Cloudflare WAF rate-limiting rule on `/api/contact`) and emails the message via Resend. Nothing is stored.
+
+Test the function locally:
+
+```bash
+cp .dev.vars.example .dev.vars   # Turnstile test secret always passes
+pnpm dev:functions               # builds, then wrangler pages dev on :8788
+```
+
+Unit tests: `pnpm test:unit`. Type-check functions: `pnpm check:functions`.
+
 ## Environment variables
 
-See `.env.example`. Set them in Cloudflare Pages (never commit real values). Used from M3 onward.
+See `.env.example`. Set them in Cloudflare Pages (never commit real values): `RESEND_API_KEY`, `TURNSTILE_SECRET`, `CONTACT_TO_EMAIL`, optional `CONTACT_FROM_EMAIL` (must be a Resend-verified sender), and the build-time `PUBLIC_TURNSTILE_SITE_KEY`.
 
 ## Deploy (Cloudflare Pages)
 

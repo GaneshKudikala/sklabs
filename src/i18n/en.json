@@ -136,6 +136,10 @@
     "directTitle": "Prefer email or a call?",
     "emailLabel": "Email",
     "bookLabel": "Book a call",
-    "turnstileNote": "Spam protection is added with the form handler."
+    "sending": "Sending...",
+    "success": "Thanks. Your message has been sent and we will reply soon.",
+    "error": "Something went wrong. Please try again or email us directly.",
+    "captcha": "Please complete the spam check and try again.",
+    "rateLimited": "Too many attempts. Please try again later."
   }
 }
