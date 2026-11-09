@@ -14,9 +14,21 @@ const statusLabel = {
   beta: t.products.statusBeta,
   'coming-soon': t.products.statusSoon,
 };
+import { breadcrumbs } from '../../../lib/schema';
+const site = Astro.site!.origin;
 ---
 
-<BaseLayout lang={lang} title={t.products.title} description={t.products.description}>
+<BaseLayout
+  lang={lang}
+  title={t.products.title}
+  description={t.products.description}
+  schema={[
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: t.products.title, url: `${site}${localePath(lang, 'products')}` },
+    ]),
+  ]}
+>
   <PageHeader title={t.products.title} lead={t.products.lead} />
   <Section>
     <div class="grid gap-5 md:grid-cols-3">

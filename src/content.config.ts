@@ -46,4 +46,16 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { services, products, pages };
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    author: z.string().default('SK LABS'),
+  }),
+});
+
+export const collections = { services, products, pages, blog };

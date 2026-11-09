@@ -152,5 +152,18 @@
     "captcha": "Please complete the spam check and try again.",
     "rateLimited": "Too many attempts. Please try again later."
   },
-  "legalUpdated": "Last updated"
+  "legalUpdated": "Last updated",
+  "insights": {
+    "title": "Insights",
+    "description": "Articles on cloud, DevOps, security and AI from SK LABS.",
+    "lead": "Practical notes on cloud, DevOps, security and AI.",
+    "empty": "No articles yet. Check back soon.",
+    "readMore": "Read article",
+    "tags": "Tags",
+    "allPosts": "All articles",
+    "tagTitle": "Articles tagged",
+    "published": "Published",
+    "rss": "RSS feed",
+    "draftNotice": "This translation is a draft."
+  }
 }

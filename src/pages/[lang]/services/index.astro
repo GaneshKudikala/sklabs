@@ -10,9 +10,21 @@ export const getStaticPaths = getStaticLangPaths;
 const lang = Astro.params.lang as Lang;
 const t = useT(lang);
 const services = await getServices(lang);
+import { breadcrumbs } from '../../../lib/schema';
+const site = Astro.site!.origin;
 ---
 
-<BaseLayout lang={lang} title={t.services.title} description={t.services.description}>
+<BaseLayout
+  lang={lang}
+  title={t.services.title}
+  description={t.services.description}
+  schema={[
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: t.services.title, url: `${site}${localePath(lang, 'services')}` },
+    ]),
+  ]}
+>
   <div class="bg-grid">
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <h1 class="text-4xl font-bold tracking-tight text-ink-950 sm:text-5xl">{t.services.title}</h1>

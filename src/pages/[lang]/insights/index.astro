@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Section from '../../../components/Section.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../../i18n';
+import { getPosts, tagSlug } from '../../../i18n/content';
+import { breadcrumbs } from '../../../lib/schema';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const posts = await getPosts(lang);
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+const site = Astro.site!.origin;
+---
+
+<BaseLayout
+  lang={lang}
+  title={t.insights.title}
+  description={t.insights.description}
+  schema={[
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: t.insights.title, url: `${site}${localePath(lang, 'insights')}` },
+    ]),
+  ]}
+>
+  <PageHeader title={t.insights.title} lead={t.insights.lead} />
+  <Section>
+    {tags.length > 0 && (
+      <nav aria-label={t.insights.tags} class="mb-8 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <a
+            href={localePath(lang, `insights/tags/${tagSlug(tag)}`)}
+            class="rounded-full border border-ink-950/15 px-3 py-1 text-sm text-ink-700 hover:border-accent-500"
+          >
+            #{tag}
+          </a>
+        ))}
+      </nav>
+    )}
+    {posts.length === 0 ? (
+      <p class="text-ink-700">{t.insights.empty}</p>
+    ) : (
+      <div class="grid gap-5 md:grid-cols-2">
+        {posts.map((p) => (
+          <PostCard
+            lang={lang}
+            slug={p.slug}
+            title={p.data.title}
+            description={p.data.description}
+            date={p.data.date}
+            tags={p.data.tags}
+            readMore={t.insights.readMore}
+          />
+        ))}
+      </div>
+    )}
+    <p class="mt-10">
+      <a class="text-sm font-semibold text-accent-600" href={`/${lang}/rss.xml`}>
+        {t.insights.rss}
+      </a>
+    </p>
+  </Section>
+</BaseLayout>

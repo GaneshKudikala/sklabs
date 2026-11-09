@@ -20,3 +20,18 @@ export async function getProducts(lang: Lang) {
 export async function getPage(lang: Lang, key: string) {
   return getEntry('pages', `${lang}/${key}`);
 }
+
+/** Posts for a language, newest first. Posts with draft: true (NL review drafts) stay visible and show a notice. */
+export async function getPosts(lang: Lang) {
+  const all = await getCollection('blog', (e) => e.id.startsWith(`${lang}/`));
+  return all
+    .map((e) => ({ slug: e.id.split('/')[1], ...e }))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
+
+export const tagSlug = (tag: string) =>
+  tag
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');

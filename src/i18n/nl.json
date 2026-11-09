@@ -152,5 +152,18 @@
     "captcha": "Voltooi de spamcontrole en probeer het opnieuw.",
     "rateLimited": "Te veel pogingen. Probeer het later opnieuw."
   },
-  "legalUpdated": "Laatst bijgewerkt"
+  "legalUpdated": "Laatst bijgewerkt",
+  "insights": {
+    "title": "Inzichten",
+    "description": "Artikelen over cloud, DevOps, security en AI van SK LABS.",
+    "lead": "Praktische notities over cloud, DevOps, security en AI.",
+    "empty": "Nog geen artikelen. Kom binnenkort terug.",
+    "readMore": "Lees artikel",
+    "tags": "Tags",
+    "allPosts": "Alle artikelen",
+    "tagTitle": "Artikelen met tag",
+    "published": "Gepubliceerd",
+    "rss": "RSS-feed",
+    "draftNotice": "Deze vertaling is een concept."
+  }
 }

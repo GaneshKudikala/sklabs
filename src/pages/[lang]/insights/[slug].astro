@@ -1,0 +1,87 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Prose from '../../../components/Prose.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import { locales, localePath, useT, type Lang } from '../../../i18n';
+import { getPosts, tagSlug } from '../../../i18n/content';
+import { breadcrumbs, blogPosting } from '../../../lib/schema';
+import { ogSlug } from '../../../lib/og';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of locales)
+    for (const p of await getPosts(lang))
+      paths.push({ params: { lang, slug: p.slug }, props: { entry: p } });
+  return paths;
+}
+const lang = Astro.params.lang as Lang;
+const { entry } = Astro.props;
+const t = useT(lang);
+const d = entry.data;
+const { Content } = await render(entry);
+const site = Astro.site!.origin;
+const url = `${site}${localePath(lang, `insights/${entry.slug}`)}`;
+const image = `${site}/og/${lang}/${ogSlug(`/${lang}/insights/${entry.slug}/`)}.png`;
+const fmt = d.date.toLocaleDateString(lang === 'nl' ? 'nl-NL' : 'en-GB', { dateStyle: 'long' });
+---
+
+<BaseLayout
+  lang={lang}
+  title={d.title}
+  description={d.description}
+  ogType="article"
+  published={d.date}
+  schema={[
+    blogPosting({
+      title: d.title,
+      description: d.description,
+      url,
+      image,
+      date: d.date,
+      author: d.author,
+      lang,
+    }),
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: t.insights.title, url: `${site}${localePath(lang, 'insights')}` },
+      { name: d.title, url },
+    ]),
+  ]}
+>
+  <PageHeader
+    title={d.title}
+    lead={d.description}
+    draftNotice={d.draft ? t.insights.draftNotice : undefined}
+  />
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <p class="mb-2 text-sm text-ink-500">
+      {t.insights.published} <time datetime={d.date.toISOString()}>{fmt}</time>
+    </p>
+    <p class="mb-8 flex flex-wrap gap-2">
+      {d.tags.map((tag) => (
+        <a
+          href={localePath(lang, `insights/tags/${tagSlug(tag)}`)}
+          class="rounded-full border border-ink-950/15 px-3 py-1 text-sm text-ink-700 hover:border-accent-500"
+        >
+          #{tag}
+        </a>
+      ))}
+    </p>
+    <Prose>
+      <Content />
+    </Prose>
+    <p class="mt-10">
+      <a class="text-sm font-semibold text-accent-600" href={localePath(lang, 'insights')}>
+        ← {t.insights.allPosts}
+      </a>
+    </p>
+  </div>
+  <CtaBand
+    title={t.home.ctaTitle}
+    body={t.home.ctaBody}
+    button={t.home.ctaButton}
+    href={localePath(lang, 'contact')}
+  />
+</BaseLayout>
