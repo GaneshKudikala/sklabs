@@ -6,10 +6,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'github' : 'list',
-  use: { baseURL: 'http://localhost:4321' },
+  use: { baseURL: 'http://localhost:4322' },
   webServer: {
-    command: 'pnpm build && pnpm preview --port 4321 --ignore-lock',
-    url: 'http://localhost:4321/en/',
+    command: 'pnpm build && pnpm preview --port 4322 --ignore-lock',
+    url: 'http://localhost:4322/en/',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

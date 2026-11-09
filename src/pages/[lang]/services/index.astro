@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/Section.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../../i18n';
+import { getServices } from '../../../i18n/content';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const services = await getServices(lang);
+---
+
+<BaseLayout lang={lang} title={t.services.title} description={t.services.description}>
+  <div class="bg-grid">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <h1 class="text-4xl font-bold tracking-tight text-ink-950 sm:text-5xl">{t.services.title}</h1>
+      <p class="mt-4 max-w-2xl text-lg text-ink-700">{t.services.lead}</p>
+    </div>
+  </div>
+  <Section>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => (
+        <ServiceCard
+          href={localePath(lang, `services/${s.slug}`)}
+          title={s.data.title}
+          summary={s.data.summary}
+          icon={s.data.icon}
+          cta={t.home.learnMore}
+        />
+      ))}
+    </div>
+  </Section>
+  <CtaBand
+    title={t.home.ctaTitle}
+    body={t.home.ctaBody}
+    button={t.home.ctaButton}
+    href={localePath(lang, 'contact')}
+  />
+</BaseLayout>

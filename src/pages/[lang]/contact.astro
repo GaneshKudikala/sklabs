@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import site from '../../content/site.json';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../i18n';
+import { getServices } from '../../i18n/content';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const c = t.contact;
+const services = await getServices(lang);
+const isPlaceholder = (v: string) => v.startsWith('[');
+const bookHref = isPlaceholder(site.calLink) ? '#form' : site.calLink;
+const field =
+  'mt-1 block w-full rounded-md border border-ink-950/20 bg-white px-3 py-2 text-ink-950 placeholder:text-ink-500';
+const label = 'block text-sm font-semibold text-ink-950';
+---
+
+<BaseLayout lang={lang} title={c.title} description={c.description}>
+  <div class="bg-grid">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <h1 class="text-4xl font-bold tracking-tight text-ink-950 sm:text-5xl">{c.title}</h1>
+      <p class="mt-4 max-w-2xl text-lg text-ink-700">{c.lead}</p>
+    </div>
+  </div>
+
+  <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[2fr_1fr]">
+    <form id="form" method="post" action="/api/contact" class="space-y-5">
+      <input type="hidden" name="lang" value={lang} />
+      <div class="hidden" aria-hidden="true">
+        <label>
+          Website <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label class={label} for="name">
+            {c.name}
+          </label>
+          <input
+            class={field}
+            id="name"
+            name="name"
+            type="text"
+            required
+            autocomplete="name"
+            maxlength="100"
+          />
+        </div>
+        <div>
+          <label class={label} for="company">
+            {c.company}
+          </label>
+          <input
+            class={field}
+            id="company"
+            name="company"
+            type="text"
+            autocomplete="organization"
+            maxlength="120"
+          />
+        </div>
+      </div>
+      <div>
+        <label class={label} for="email">
+          {c.email}
+        </label>
+        <input
+          class={field}
+          id="email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          maxlength="200"
+        />
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label class={label} for="interest">
+            {c.interest}
+          </label>
+          <select class={field} id="interest" name="interest">
+            <option value="">{c.interestPlaceholder}</option>
+            {services.map((s) => (
+              <option value={s.slug}>{s.data.title}</option>
+            ))}
+            <option value="other">{c.interestOther}</option>
+          </select>
+        </div>
+        <div>
+          <label class={label} for="budget">
+            {c.budget}
+          </label>
+          <select class={field} id="budget" name="budget">
+            <option value="">{c.budgetPlaceholder}</option>
+            {c.budgets.map((b) => (
+              <option value={b}>{b}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class={label} for="message">
+          {c.message}
+        </label>
+        <textarea
+          class={field}
+          id="message"
+          name="message"
+          rows="6"
+          required
+          maxlength="4000"
+        ></textarea>
+      </div>
+      <p class="text-sm text-ink-500">
+        {c.privacy}{' '}
+        <a class="font-semibold text-accent-600 underline" href={localePath(lang, 'legal/privacy')}>
+          {c.privacyLink}
+        </a>
+        .
+      </p>
+      <button
+        type="submit"
+        class="rounded-md bg-accent-400 px-6 py-3 font-semibold text-ink-950 hover:bg-accent-500"
+      >
+        {c.send}
+      </button>
+    </form>
+
+    <aside class="h-fit rounded-xl border border-ink-950/10 bg-ink-100 p-6">
+      <h2 class="font-semibold text-ink-950">{c.directTitle}</h2>
+      <ul class="mt-4 space-y-3 text-sm">
+        <li class="flex items-center gap-2">
+          <Icon name="mail" class="h-4 w-4 text-accent-600" />
+          {isPlaceholder(site.contactEmail) ? (
+            <span>{site.contactEmail}</span>
+          ) : (
+            <a class="font-semibold text-ink-950 underline" href={`mailto:${site.contactEmail}`}>
+              {site.contactEmail}
+            </a>
+          )}
+        </li>
+        <li class="flex items-center gap-2">
+          <Icon name="calendar" class="h-4 w-4 text-accent-600" />
+          <a class="font-semibold text-ink-950 underline" href={bookHref}>
+            {c.bookLabel}
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>

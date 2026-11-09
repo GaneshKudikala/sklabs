@@ -1,10 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Icon from '../../components/Icon.astro';
 import { getStaticLangPaths, localePath, useT, type Lang } from '../../i18n';
+import { getServices, getProducts } from '../../i18n/content';
 
 export const getStaticPaths = getStaticLangPaths;
 const lang = Astro.params.lang as Lang;
 const t = useT(lang);
+const services = await getServices(lang);
+const products = await getProducts(lang);
+const statusLabel = {
+  live: t.products.statusLive,
+  beta: t.products.statusBeta,
+  'coming-soon': t.products.statusSoon,
+};
+const clouds = ['AWS', 'Microsoft Azure', 'Google Cloud'];
 ---
 
 <BaseLayout lang={lang} title={t.home.title} description={t.home.description}>
@@ -22,7 +35,7 @@ const t = useT(lang);
           {t.home.ctaPrimary}
         </a>
         <a
-          href={localePath(lang, 'services')}
+          href="#services"
           class="rounded-md border border-ink-950/20 px-6 py-3 font-semibold text-ink-950 hover:bg-ink-950/5"
         >
           {t.home.ctaSecondary}
@@ -30,4 +43,79 @@ const t = useT(lang);
       </div>
     </div>
   </section>
+
+  <section aria-label={t.home.cloudsTitle} class="border-y border-ink-950/10">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-4 py-6 sm:px-6">
+      <span class="text-sm text-ink-500">{t.home.cloudsLead}</span>
+      {clouds.map((c) => (
+        <span class="rounded-full border border-ink-950/15 px-4 py-1 text-sm font-semibold text-ink-950">
+          {c}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <Section id="services" title={t.home.servicesTitle} lead={t.home.servicesLead}>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => (
+        <ServiceCard
+          href={localePath(lang, `services/${s.slug}`)}
+          title={s.data.title}
+          summary={s.data.summary}
+          icon={s.data.icon}
+          cta={t.home.learnMore}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="muted" title={t.home.productsTitle} lead={t.home.productsLead}>
+    <div class="grid gap-5 md:grid-cols-3">
+      {products.map((p) => (
+        <div class="rounded-xl border border-ink-950/10 bg-white p-6">
+          <span class="inline-block rounded-full bg-accent-400/25 px-3 py-1 text-xs font-semibold text-accent-600">
+            {statusLabel[p.data.status]}
+          </span>
+          <h3 class="mt-4 text-lg font-semibold text-ink-950">{p.data.name}</h3>
+          <p class="mt-2 text-sm text-ink-700">{p.data.tagline}</p>
+        </div>
+      ))}
+    </div>
+    <a
+      href={localePath(lang, 'products')}
+      class="mt-8 inline-flex items-center gap-1 font-semibold text-accent-600"
+    >
+      {t.home.productsCta} <Icon name="arrow-right" class="h-4 w-4" />
+    </a>
+  </Section>
+
+  <Section title={t.home.workTitle} lead={t.home.workLead}>
+    <ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {t.home.steps.map((s, i) => (
+        <li class="rounded-xl border border-ink-950/10 p-6">
+          <span class="font-mono text-sm text-accent-600">0{i + 1}</span>
+          <h3 class="mt-2 text-lg font-semibold text-ink-950">{s.title}</h3>
+          <p class="mt-2 text-sm text-ink-700">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </Section>
+
+  <Section tone="muted" title={t.home.credTitle}>
+    <ul class="grid gap-5 md:grid-cols-3">
+      {t.home.credentials.map((c) => (
+        <li class="rounded-xl border border-ink-950/10 bg-white p-6">
+          <h3 class="text-lg font-semibold text-ink-950">{c.title}</h3>
+          <p class="mt-2 text-sm text-ink-700">{c.body}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <CtaBand
+    title={t.home.ctaTitle}
+    body={t.home.ctaBody}
+    button={t.home.ctaButton}
+    href={localePath(lang, 'contact')}
+  />
 </BaseLayout>

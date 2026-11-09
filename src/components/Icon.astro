@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className = 'h-6 w-6' } = Astro.props;
+const icons = import.meta.glob<string>(
+  '/node_modules/lucide-static/icons/{cloud,life-buoy,workflow,shield-check,bot,arrow-right,check,mail,calendar,clipboard-list,pencil-ruler,hammer,activity,award,users,server}.svg',
+  { query: '?raw', import: 'default', eager: true },
+);
+const raw = icons[`/node_modules/lucide-static/icons/${name}.svg`] ?? '';
+const svg = raw
+  .replace(/<!--[\s\S]*?-->/, '')
+  .replace(/class="[^"]*"/, `class="${className}" aria-hidden="true" focusable="false"`);
+---
+
+<Fragment set:html={svg} />
