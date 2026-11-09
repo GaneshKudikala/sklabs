@@ -3,16 +3,26 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { useT, type Lang } from '../i18n';
+import { ogSlug } from '../lib/og';
+import { organization } from '../lib/schema';
 
 interface Props {
   lang: Lang;
   title: string;
   description?: string;
+  schema?: object[];
+  ogType?: 'website' | 'article';
+  published?: Date;
+  /** Override the OG image slug (used by pages outside the OG registry, like 404). */
+  ogImageSlug?: string;
 }
-const { lang, title, description } = Astro.props;
+const { lang, title, description, schema = [], ogType, published, ogImageSlug } = Astro.props;
 const t = useT(lang);
 const pathname = Astro.url.pathname;
+const site = Astro.site ?? new URL('https://sklabs.nl');
+const image = new URL(`/og/${lang}/${ogImageSlug ?? ogSlug(pathname)}.png`, site).href;
 const fullTitle = title === t.meta.siteName ? title : `${title} | ${t.meta.siteName}`;
 // Flip to true once case studies exist (see src/content/case-studies).
 const showWork = false;
@@ -30,7 +40,11 @@ const showWork = false;
       description={description ?? t.meta.defaultDescription}
       lang={lang}
       pathname={pathname}
+      image={image}
+      ogType={ogType}
+      published={published}
     />
+    <JsonLd data={[organization(), ...schema]} />
   </head>
   <body class="flex min-h-screen flex-col">
     <a

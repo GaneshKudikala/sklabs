@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../../components/PageHeader.astro';
+import Section from '../../../../components/Section.astro';
+import PostCard from '../../../../components/PostCard.astro';
+import { locales, localePath, useT, type Lang } from '../../../../i18n';
+import { getPosts, tagSlug } from '../../../../i18n/content';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of locales) {
+    const posts = await getPosts(lang);
+    const tags = new Map<string, string>();
+    posts.forEach((p) => p.data.tags.forEach((tag) => tags.set(tagSlug(tag), tag)));
+    for (const [slug, label] of tags) {
+      paths.push({
+        params: { lang, tag: slug },
+        props: { label, posts: posts.filter((p) => p.data.tags.some((x) => tagSlug(x) === slug)) },
+      });
+    }
+  }
+  return paths;
+}
+const lang = Astro.params.lang as Lang;
+const { label, posts } = Astro.props;
+const t = useT(lang);
+const title = `${t.insights.tagTitle} #${label}`;
+---
+
+<BaseLayout
+  lang={lang}
+  title={title}
+  description={`${title}. ${t.insights.description}`}
+  ogImageSlug="insights"
+>
+  <PageHeader title={title} />
+  <Section>
+    <div class="grid gap-5 md:grid-cols-2">
+      {posts.map((p) => (
+        <PostCard
+          lang={lang}
+          slug={p.slug}
+          title={p.data.title}
+          description={p.data.description}
+          date={p.data.date}
+          tags={p.data.tags}
+          readMore={t.insights.readMore}
+        />
+      ))}
+    </div>
+    <p class="mt-10">
+      <a class="text-sm font-semibold text-accent-600" href={localePath(lang, 'insights')}>
+        ← {t.insights.allPosts}
+      </a>
+    </p>
+  </Section>
+</BaseLayout>

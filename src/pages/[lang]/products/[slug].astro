@@ -19,14 +19,31 @@ const lang = Astro.params.lang as Lang;
 const { entry } = Astro.props;
 const t = useT(lang);
 const d = entry.data;
+const site = Astro.site!.origin;
+const url = `${site}${localePath(lang, `products/${entry.slug}`)}`;
+// Placeholder products are not described to search engines yet.
+const app = isPlaceholder(d.name) ? [] : [softwareApplication(d.name, d.tagline, url, d.url)];
 const statusLabel = {
   live: t.products.statusLive,
   beta: t.products.statusBeta,
   'coming-soon': t.products.statusSoon,
 };
+import { breadcrumbs, isPlaceholder, softwareApplication } from '../../../lib/schema';
 ---
 
-<BaseLayout lang={lang} title={d.name} description={d.tagline}>
+<BaseLayout
+  lang={lang}
+  title={d.name}
+  description={d.tagline}
+  schema={[
+    ...app,
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: t.products.title, url: `${site}${localePath(lang, 'products')}` },
+      { name: d.name, url },
+    ]),
+  ]}
+>
   <PageHeader
     title={d.name}
     lead={d.tagline}

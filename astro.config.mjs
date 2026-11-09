@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://sklabs.nl',
   trailingSlash: 'always',
-  build: { format: 'directory' },
+  build: { format: 'directory', inlineStylesheets: 'never' },
   i18n: {
     locales: ['en', 'nl'],
     defaultLocale: 'en',

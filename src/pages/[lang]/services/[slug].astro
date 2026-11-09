@@ -18,14 +18,30 @@ const lang = Astro.params.lang as Lang;
 const { entry } = Astro.props;
 const t = useT(lang);
 const d = entry.data;
+const site = Astro.site!.origin;
+const url = `${site}${localePath(lang, `services/${entry.slug}`)}`;
 const models = [
   { label: t.services.assessment, body: d.engagement.assessment },
   { label: t.services.project, body: d.engagement.project },
   { label: t.services.retainer, body: d.engagement.retainer },
 ];
+import { breadcrumbs, faqPage, service } from '../../../lib/schema';
 ---
 
-<BaseLayout lang={lang} title={d.seoTitle ?? d.title} description={d.seoDescription}>
+<BaseLayout
+  lang={lang}
+  title={d.seoTitle ?? d.title}
+  description={d.seoDescription}
+  schema={[
+    service(d.title, d.seoDescription, url),
+    faqPage(d.faq),
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: t.services.title, url: `${site}${localePath(lang, 'services')}` },
+      { name: d.title, url },
+    ]),
+  ]}
+>
   <div class="bg-grid">
     <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <a href={localePath(lang, 'services')} class="text-sm font-semibold text-accent-600">
