@@ -1,12 +1,12 @@
 import { locales, useT, type Lang } from '../i18n';
-import { getServices, getProducts, getPosts, getPage } from '../i18n/content';
+import { getServices, getProducts, getPosts, getPage, getCaseStudies } from '../i18n/content';
 
-export interface OgEntry {
+export type OgEntry = {
   lang: Lang;
   slug: string;
   title: string;
   description: string;
-}
+};
 
 /** URL slug used for an OG image: '/en/services/x/' -> 'services--x', home -> 'home'. */
 export function ogSlug(pathname: string): string {
@@ -50,6 +50,11 @@ export async function ogEntries(): Promise<OgEntry[]> {
         title: p.data.name,
         description: p.data.tagline,
       });
+    const work = await getCaseStudies(lang);
+    if (work.length)
+      out.push({ lang, slug: 'work', title: t.work.title, description: t.work.description });
+    for (const w of work)
+      out.push({ lang, slug: `work--${w.slug}`, title: w.data.title, description: w.data.summary });
     for (const p of await getPosts(lang))
       out.push({
         lang,

@@ -165,5 +165,17 @@
     "published": "Gepubliceerd",
     "rss": "RSS-feed",
     "draftNotice": "Deze vertaling is een concept."
+  },
+  "work": {
+    "title": "Projecten",
+    "description": "Geselecteerd klantwerk van SK LABS.",
+    "lead": "Een selectie van projecten.",
+    "challenge": "Uitdaging",
+    "solution": "Oplossing",
+    "outcomes": "Resultaten",
+    "client": "Klant",
+    "sector": "Sector",
+    "back": "Alle projecten",
+    "readMore": "Lees case study"
   }
 }

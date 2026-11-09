@@ -35,3 +35,14 @@ export const tagSlug = (tag: string) =>
     .trim()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
+
+// import.meta.glob lets us skip getCollection (which warns on every call) while the folder is empty.
+const caseStudyFiles = Object.keys(import.meta.glob('/src/content/case-studies/**/*.md'));
+
+export async function getCaseStudies(lang: Lang) {
+  if (caseStudyFiles.length === 0) return [];
+  const all = await getCollection('case-studies', (e) => e.id.startsWith(`${lang}/`));
+  return all
+    .map((e) => ({ slug: e.id.split('/')[1], ...e }))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
