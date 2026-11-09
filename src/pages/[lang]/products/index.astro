@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Section from '../../../components/Section.astro';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../../i18n';
+import { getProducts } from '../../../i18n/content';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const products = await getProducts(lang);
+const statusLabel = {
+  live: t.products.statusLive,
+  beta: t.products.statusBeta,
+  'coming-soon': t.products.statusSoon,
+};
+---
+
+<BaseLayout lang={lang} title={t.products.title} description={t.products.description}>
+  <PageHeader title={t.products.title} lead={t.products.lead} />
+  <Section>
+    <div class="grid gap-5 md:grid-cols-3">
+      {products.map((p) => (
+        <a
+          href={localePath(lang, `products/${p.slug}`)}
+          class="rounded-xl border border-ink-950/10 bg-white p-6 transition hover:border-accent-500 hover:shadow-md"
+        >
+          <span class="inline-block rounded-full bg-accent-400/25 px-3 py-1 text-xs font-semibold text-accent-600">
+            {statusLabel[p.data.status]}
+          </span>
+          <h2 class="mt-4 text-lg font-semibold text-ink-950">{p.data.name}</h2>
+          <p class="mt-2 text-sm text-ink-700">{p.data.tagline}</p>
+        </a>
+      ))}
+    </div>
+  </Section>
+</BaseLayout>

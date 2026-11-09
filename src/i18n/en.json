@@ -107,7 +107,17 @@
   "products": {
     "statusLive": "Live",
     "statusBeta": "Beta",
-    "statusSoon": "Coming soon"
+    "statusSoon": "Coming soon",
+    "title": "Products",
+    "description": "SaaS products built by SK LABS. Coming soon.",
+    "lead": "We build our own software alongside consulting. These products are in development.",
+    "problem": "The problem",
+    "features": "Key features",
+    "visit": "Visit product",
+    "notify": "Ask to be notified",
+    "back": "All products",
+    "notifyBody": "Want early access or updates? Get in touch.",
+    "draftNotice": "This translation is a draft."
   },
   "contact": {
     "title": "Contact",
@@ -141,5 +151,6 @@
     "error": "Something went wrong. Please try again or email us directly.",
     "captcha": "Please complete the spam check and try again.",
     "rateLimited": "Too many attempts. Please try again later."
-  }
+  },
+  "legalUpdated": "Last updated"
 }
