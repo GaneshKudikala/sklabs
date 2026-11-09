@@ -12,11 +12,12 @@ const year = new Date().getFullYear();
 
 const company = [
   { href: localePath(lang, 'services'), label: t.nav.services },
+  { href: localePath(lang, 'jobs'), label: t.nav.jobs },
+  { href: localePath(lang, 'hire'), label: t.nav.hire },
   { href: localePath(lang, 'products'), label: t.nav.products },
   ...(showWork ? [{ href: localePath(lang, 'work'), label: t.nav.work }] : []),
   { href: localePath(lang, 'about'), label: t.nav.about },
   { href: localePath(lang, 'insights'), label: t.nav.insights },
-  { href: localePath(lang, 'careers'), label: t.nav.careers },
   { href: localePath(lang, 'contact'), label: t.nav.contact },
 ];
 const legal = [

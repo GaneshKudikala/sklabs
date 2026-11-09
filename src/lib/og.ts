@@ -30,7 +30,7 @@ export async function ogEntries(): Promise<OgEntry[]> {
       { lang, slug: 'home', title: t.home.title, description: t.home.description },
       { lang, slug: 'services', title: t.services.title, description: t.services.description },
       { lang, slug: 'products', title: t.products.title, description: t.products.description },
-      { lang, slug: 'careers', title: t.careers.title, description: t.careers.description },
+      { lang, slug: 'jobs', title: t.jobs.title, description: t.jobs.description },
       { lang, slug: 'insights', title: t.insights.title, description: t.insights.description },
       { lang, slug: 'contact', title: t.contact.title, description: t.contact.description },
     );
@@ -58,10 +58,10 @@ export async function ogEntries(): Promise<OgEntry[]> {
         title: p.data.name,
         description: p.data.tagline,
       });
-    for (const j of await getJobs(lang))
+    for (const j of await getJobs(lang, { includeClosed: true }))
       out.push({
         lang,
-        slug: `careers--${j.slug}`,
+        slug: `jobs--${j.slug}`,
         title: j.data.title,
         description: j.data.summary,
       });

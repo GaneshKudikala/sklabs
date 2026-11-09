@@ -1,0 +1,33 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Prose from '../../components/Prose.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../i18n';
+import { getPage } from '../../i18n/content';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const page = (await getPage(lang, 'hire'))!;
+const { Content } = await render(page);
+---
+
+<BaseLayout lang={lang} title={page.data.title} description={page.data.description}>
+  <PageHeader
+    title={page.data.title}
+    draftNotice={page.data.draft ? t.services.draftNotice : undefined}
+  />
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <Prose>
+      <Content />
+    </Prose>
+  </div>
+  <CtaBand
+    title={t.hire.button}
+    body={t.home.ctaBody}
+    button={t.hire.button}
+    href={localePath(lang, 'contact')}
+  />
+</BaseLayout>

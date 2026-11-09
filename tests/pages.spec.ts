@@ -6,7 +6,7 @@ const slugs = [
   'devops-platform-engineering',
   'cloud-security-compliance',
   'ai-agentic-consulting',
-  'consultant-placement',
+  'talent-recruitment',
 ];
 
 for (const lang of ['en', 'nl'] as const) {

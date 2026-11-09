@@ -25,7 +25,8 @@ describe('translations', () => {
     expect(shape(nl).sort()).toEqual(shape(en).sort());
   });
 
-  for (const collection of ['services', 'products', 'pages', 'blog', 'jobs']) {
+  // Jobs, blog posts and case studies are authored per language, so they need not match.
+  for (const collection of ['services', 'products', 'pages']) {
     it(`every EN ${collection} file has an NL counterpart and vice versa`, () => {
       const base = join('src/content', collection);
       const files = (lang: string) =>
@@ -37,7 +38,7 @@ describe('translations', () => {
   }
 
   it('NL content files are flagged draft until reviewed', () => {
-    const offenders = ['services', 'products', 'pages', 'blog', 'jobs'].flatMap((c) =>
+    const offenders = ['services', 'products', 'pages'].flatMap((c) =>
       walk(join('src/content', c, 'nl')).filter(
         (p) => p.endsWith('.md') && !/^draft:\s*true/m.test(readFileSync(p, 'utf8')),
       ),

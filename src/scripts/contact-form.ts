@@ -20,7 +20,7 @@ if (form && statusEl) {
   if (params.get('job') && jobTitle) {
     const interest = form.querySelector<HTMLSelectElement>('#interest');
     const message = form.querySelector<HTMLTextAreaElement>('#message');
-    if (interest) interest.value = 'careers';
+    if (interest) interest.value = 'job-application';
     if (message && !message.value) {
       message.value = `${params.get('prefix') ?? 'Application for'}: ${jobTitle.slice(0, 120)} (${params.get('job')!.slice(0, 80)})\n\n`;
     }

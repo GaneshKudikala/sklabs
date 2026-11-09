@@ -76,23 +76,41 @@ const caseStudies = defineCollection({
 
 const jobs = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/jobs' }),
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    location: z.string(), // city, or "[LOCATION]" until known; customer sites can be named generically
-    workMode: z.enum(['onsite', 'hybrid', 'remote']),
-    employmentType: z.enum(['contract', 'permanent', 'freelance', 'interim']),
-    posted: z.coerce.date(),
-    validThrough: z.coerce.date().optional(),
-    status: z.enum(['open', 'closed']).default('open'),
-    level: z.string().optional(),
-    responsibilities: z.array(z.string()),
-    requirements: z.array(z.string()),
-    niceToHave: z.array(z.string()).default([]),
-    skills: z.array(z.string()).default([]),
-    compensation: z.string().optional(),
-    draft: z.boolean().default(false),
-  }),
+  schema: z
+    .object({
+      title: z.string(),
+      summary: z.string(),
+      reference: z.string(),
+      status: z.enum(['open', 'closed']).default('open'),
+      datePosted: z.coerce.date(),
+      validThrough: z.coerce.date().optional(),
+      employmentType: z.enum(['FULL_TIME', 'CONTRACTOR', 'PART_TIME']),
+      seniority: z.enum(['junior', 'medior', 'senior', 'lead']),
+      specialism: z
+        .array(z.enum(['cloud', 'devops', 'sre', 'security', 'data-ai', 'other']))
+        .min(1),
+      location: z.string(), // city, or "[LOCATION]" until known
+      country: z.string().length(2).default('NL'), // ISO 3166-1 alpha-2
+      workModel: z.enum(['onsite', 'hybrid', 'remote']),
+      // Pay transparency: both are required, so the build fails if they are missing.
+      salaryMin: z.number().positive(),
+      salaryMax: z.number().positive(),
+      currency: z.string().length(3).default('EUR'),
+      salaryPeriod: z.enum(['YEAR', 'MONTH', 'HOUR', 'DAY']),
+      clientDescriptor: z.string(), // anonymised, e.g. "Fintech scale-up"
+      recruiter: z.object({ name: z.string(), email: z.string() }),
+      tags: z.array(z.string()).default([]),
+      responsibilities: z.array(z.string()),
+      requirements: z.array(z.string()),
+      niceToHave: z.array(z.string()).default([]),
+      offered: z.array(z.string()).default([]),
+      sample: z.boolean().default(false), // sample roles are hidden in production builds
+      draft: z.boolean().default(false),
+    })
+    .refine((j) => j.salaryMax >= j.salaryMin, {
+      message: 'salaryMax must be >= salaryMin',
+      path: ['salaryMax'],
+    }),
 });
 
 export const collections = {

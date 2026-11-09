@@ -99,42 +99,53 @@ export const blogPosting = (p: {
   publisher: { '@id': ORG_ID },
 });
 
-const EMPLOYMENT = {
-  contract: 'CONTRACTOR',
-  freelance: 'CONTRACTOR',
-  permanent: 'FULL_TIME',
-  interim: 'TEMPORARY',
-} as const;
-
-/** JobPosting JSON-LD. Returns null while key fields are still [PLACEHOLDER]s. */
+/** JobPosting JSON-LD (Google for Jobs). Returns null while title or location are still [PLACEHOLDER]s. */
 export const jobPosting = (j: {
   title: string;
   description: string;
   url: string;
+  reference: string;
   location: string;
-  workMode: 'onsite' | 'hybrid' | 'remote';
-  employmentType: keyof typeof EMPLOYMENT;
-  posted: Date;
+  country: string;
+  workModel: 'onsite' | 'hybrid' | 'remote';
+  employmentType: 'FULL_TIME' | 'CONTRACTOR' | 'PART_TIME';
+  datePosted: Date;
   validThrough?: Date;
+  salaryMin: number;
+  salaryMax: number;
+  currency: string;
+  salaryPeriod: 'YEAR' | 'MONTH' | 'HOUR' | 'DAY';
   lang: string;
 }) => {
-  const remote = j.workMode === 'remote';
+  const remote = j.workModel === 'remote';
   if (isPlaceholder(j.title) || (!remote && isPlaceholder(j.location))) return null;
+  const day = (d: Date) => d.toISOString().slice(0, 10);
   return {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: j.title,
     description: j.description,
     url: j.url,
-    datePosted: j.posted.toISOString().slice(0, 10),
-    ...(j.validThrough ? { validThrough: j.validThrough.toISOString().slice(0, 10) } : {}),
-    employmentType: EMPLOYMENT[j.employmentType],
+    identifier: { '@type': 'PropertyValue', name: 'SK LABS', value: j.reference },
+    datePosted: day(j.datePosted),
+    ...(j.validThrough ? { validThrough: day(j.validThrough) } : {}),
+    employmentType: j.employmentType,
     inLanguage: j.lang,
     hiringOrganization: { '@id': ORG_ID },
+    baseSalary: {
+      '@type': 'MonetaryAmount',
+      currency: j.currency,
+      value: {
+        '@type': 'QuantitativeValue',
+        minValue: j.salaryMin,
+        maxValue: j.salaryMax,
+        unitText: j.salaryPeriod,
+      },
+    },
     ...(remote
       ? {
           jobLocationType: 'TELECOMMUTE',
-          applicantLocationRequirements: { '@type': 'Country', name: 'Netherlands' },
+          applicantLocationRequirements: { '@type': 'Country', name: j.country },
         }
       : {
           jobLocation: {
@@ -142,7 +153,7 @@ export const jobPosting = (j: {
             address: {
               '@type': 'PostalAddress',
               addressLocality: j.location,
-              addressCountry: 'NL',
+              addressCountry: j.country,
             },
           },
         }),

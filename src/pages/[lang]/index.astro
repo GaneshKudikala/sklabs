@@ -2,16 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/Section.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
-import CtaBand from '../../components/CtaBand.astro';
+import SplitCta from '../../components/SplitCta.astro';
+import JobCard from '../../components/JobCard.astro';
 import Icon from '../../components/Icon.astro';
 import { getStaticLangPaths, localePath, useT, type Lang } from '../../i18n';
-import { getServices, getProducts } from '../../i18n/content';
+import { getServices, getProducts, getJobs } from '../../i18n/content';
 
 export const getStaticPaths = getStaticLangPaths;
 const lang = Astro.params.lang as Lang;
 const t = useT(lang);
 const services = await getServices(lang);
 const products = await getProducts(lang);
+const latestJobs = (await getJobs(lang)).slice(0, 3);
 const statusLabel = {
   live: t.products.statusLive,
   beta: t.products.statusBeta,
@@ -41,10 +43,10 @@ import { professionalService } from '../../lib/schema';
           {t.home.ctaPrimary}
         </a>
         <a
-          href="#services"
+          href={localePath(lang, 'jobs')}
           class="rounded-md border border-ink-950/20 px-6 py-3 font-semibold text-ink-950 hover:bg-ink-950/5"
         >
-          {t.home.ctaSecondary}
+          {t.home.viewRoles}
         </a>
       </div>
     </div>
@@ -75,7 +77,27 @@ import { professionalService } from '../../lib/schema';
     </div>
   </Section>
 
-  <Section tone="muted" title={t.home.productsTitle} lead={t.home.productsLead}>
+  {latestJobs.length > 0 && (
+    <Section tone="muted" title={t.home.latestJobs} lead={t.home.latestJobsLead}>
+      <ul class="grid gap-5 md:grid-cols-3">
+        {latestJobs.map((x) => (
+          <JobCard lang={lang} slug={x.slug} d={x.data} />
+        ))}
+      </ul>
+      <a
+        href={localePath(lang, 'jobs')}
+        class="mt-8 inline-flex items-center gap-1 font-semibold text-accent-600"
+      >
+        {t.home.allJobs} <Icon name="arrow-right" class="h-4 w-4" />
+      </a>
+    </Section>
+  )}
+
+  <Section
+    tone={latestJobs.length > 0 ? 'default' : 'muted'}
+    title={t.home.productsTitle}
+    lead={t.home.productsLead}
+  >
     <div class="grid gap-5 md:grid-cols-3">
       {products.map((p) => (
         <div class="rounded-xl border border-ink-950/10 bg-white p-6">
@@ -118,10 +140,18 @@ import { professionalService } from '../../lib/schema';
     </ul>
   </Section>
 
-  <CtaBand
-    title={t.home.ctaTitle}
-    body={t.home.ctaBody}
-    button={t.home.ctaButton}
-    href={localePath(lang, 'contact')}
+  <SplitCta
+    left={{
+      title: t.home.splitHireTitle,
+      body: t.home.splitHireBody,
+      button: t.home.splitHireButton,
+      href: localePath(lang, 'hire'),
+    }}
+    right={{
+      title: t.home.splitJobsTitle,
+      body: t.home.splitJobsBody,
+      button: t.home.splitJobsButton,
+      href: localePath(lang, 'jobs'),
+    }}
   />
 </BaseLayout>
