@@ -89,3 +89,32 @@ describe('isRateLimited', () => {
     expect(await isRateLimited(ip, undefined, t0 + 601_000)).toBe(false);
   });
 });
+
+describe('jobPosting JSON-LD', async () => {
+  const { jobPosting } = await import('../../src/lib/schema');
+  const base = {
+    title: 'Cloud Engineer',
+    description: '<p>x</p>',
+    url: 'https://sklabs.nl/en/careers/x/',
+    location: 'Utrecht',
+    workMode: 'hybrid' as const,
+    employmentType: 'contract' as const,
+    posted: new Date('2026-01-02'),
+    lang: 'en',
+  };
+  it('builds a valid posting', () => {
+    const j = jobPosting(base)!;
+    expect(j['@type']).toBe('JobPosting');
+    expect(j.employmentType).toBe('CONTRACTOR');
+    expect(j.datePosted).toBe('2026-01-02');
+  });
+  it('is skipped while title or location are placeholders', () => {
+    expect(jobPosting({ ...base, location: '[LOCATION]' })).toBeNull();
+    expect(jobPosting({ ...base, title: '[JOB_TITLE]' })).toBeNull();
+  });
+  it('remote roles need no location', () => {
+    expect(
+      jobPosting({ ...base, location: '[LOCATION]', workMode: 'remote' })?.jobLocationType,
+    ).toBe('TELECOMMUTE');
+  });
+});

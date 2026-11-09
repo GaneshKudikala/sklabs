@@ -1,5 +1,12 @@
 import { locales, useT, type Lang } from '../i18n';
-import { getServices, getProducts, getPosts, getPage, getCaseStudies } from '../i18n/content';
+import {
+  getServices,
+  getProducts,
+  getPosts,
+  getPage,
+  getCaseStudies,
+  getJobs,
+} from '../i18n/content';
 
 export type OgEntry = {
   lang: Lang;
@@ -23,6 +30,7 @@ export async function ogEntries(): Promise<OgEntry[]> {
       { lang, slug: 'home', title: t.home.title, description: t.home.description },
       { lang, slug: 'services', title: t.services.title, description: t.services.description },
       { lang, slug: 'products', title: t.products.title, description: t.products.description },
+      { lang, slug: 'careers', title: t.careers.title, description: t.careers.description },
       { lang, slug: 'insights', title: t.insights.title, description: t.insights.description },
       { lang, slug: 'contact', title: t.contact.title, description: t.contact.description },
     );
@@ -49,6 +57,13 @@ export async function ogEntries(): Promise<OgEntry[]> {
         slug: `products--${p.slug}`,
         title: p.data.name,
         description: p.data.tagline,
+      });
+    for (const j of await getJobs(lang))
+      out.push({
+        lang,
+        slug: `careers--${j.slug}`,
+        title: j.data.title,
+        description: j.data.summary,
       });
     const work = await getCaseStudies(lang);
     if (work.length)

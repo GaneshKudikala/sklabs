@@ -8,6 +8,8 @@ const pages = [
   'products/',
   'products/product-1/',
   'about/',
+  'careers/',
+  'services/consultant-placement/',
   'contact/',
   'insights/',
   'insights/what-is-a-landing-zone/',

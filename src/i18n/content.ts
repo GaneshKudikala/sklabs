@@ -46,3 +46,15 @@ export async function getCaseStudies(lang: Lang) {
     .map((e) => ({ slug: e.id.split('/')[1], ...e }))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
+
+const jobFiles = Object.keys(import.meta.glob('/src/content/jobs/**/*.md'));
+
+/** Open, unexpired job postings for a language, newest first. Expiry is evaluated at build time. */
+export async function getJobs(lang: Lang, now = new Date()) {
+  if (jobFiles.length === 0) return [];
+  const all = await getCollection('jobs', (e) => e.id.startsWith(`${lang}/`));
+  return all
+    .filter((e) => e.data.status === 'open' && (!e.data.validThrough || e.data.validThrough >= now))
+    .map((e) => ({ slug: e.id.split('/')[1], ...e }))
+    .sort((a, b) => b.data.posted.valueOf() - a.data.posted.valueOf());
+}
