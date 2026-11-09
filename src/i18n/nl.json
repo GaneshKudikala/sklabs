@@ -14,7 +14,8 @@
     "menu": "Menu",
     "skip": "Ga naar inhoud",
     "language": "Taal",
-    "main": "Hoofdnavigatie"
+    "main": "Hoofdnavigatie",
+    "careers": "Werken bij"
   },
   "footer": {
     "tagline": "Cloud-, DevOps-, security- en AI-engineering. Gebouwd in Nederland.",
@@ -35,7 +36,7 @@
     "ctaPrimary": "Plan een gesprek",
     "ctaSecondary": "Bekijk diensten",
     "servicesTitle": "Wat we doen",
-    "servicesLead": "Vijf specialismen die de hele cloud-levenscyclus dekken, van fundament tot AI.",
+    "servicesLead": "Specialismen die de hele cloud-levenscyclus dekken, van fundament tot AI, plus consultants bij jou op locatie.",
     "learnMore": "Lees meer",
     "cloudsTitle": "Multi-cloud uit ervaring",
     "cloudsLead": "We werken op alle grote publieke clouds.",
@@ -150,7 +151,8 @@
     "success": "Bedankt. Je bericht is verzonden en we reageren snel.",
     "error": "Er ging iets mis. Probeer het opnieuw of mail ons direct.",
     "captcha": "Voltooi de spamcontrole en probeer het opnieuw.",
-    "rateLimited": "Te veel pogingen. Probeer het later opnieuw."
+    "rateLimited": "Te veel pogingen. Probeer het later opnieuw.",
+    "interestCareers": "Werken bij / sollicitatie"
   },
   "legalUpdated": "Laatst bijgewerkt",
   "insights": {
@@ -177,5 +179,43 @@
     "sector": "Sector",
     "back": "Alle projecten",
     "readMore": "Lees case study"
+  },
+  "careers": {
+    "title": "Werken bij",
+    "description": "Open vacatures en consultantrollen bij klanten met SK LABS.",
+    "lead": "We plaatsen ervaren cloud-, DevOps-, security- en AI-consultants bij klanten en horen graag van goede engineers.",
+    "introTitle": "Werken met SK LABS",
+    "intro": "[CAREERS_INTRO] Vertel waar je goed in bent en waar je de volgende stap wilt zetten.",
+    "openTitle": "Open vacatures",
+    "empty": "Er zijn nu geen open vacatures. Stuur ons je profiel en we nemen contact op als er iets past.",
+    "apply": "Solliciteer",
+    "applySpontaneous": "Stuur je profiel",
+    "spontaneousTitle": "Geen passende vacature?",
+    "spontaneousBody": "We plaatsen consultants doorlopend bij klanten. Stuur een korte toelichting op je ervaring.",
+    "location": "Locatie",
+    "workMode": "Werkvorm",
+    "type": "Type",
+    "level": "Niveau",
+    "compensation": "Vergoeding",
+    "posted": "Geplaatst",
+    "responsibilities": "Wat je gaat doen",
+    "requirements": "Wat je meebrengt",
+    "niceToHave": "Mooi meegenomen",
+    "skills": "Vaardigheden",
+    "back": "Alle vacatures",
+    "readMore": "Bekijk vacature",
+    "applyBody": "Interesse? Stuur ons je profiel en noem deze vacature.",
+    "applyPrefix": "Sollicitatie voor",
+    "modes": {
+      "onsite": "Op locatie",
+      "hybrid": "Hybride",
+      "remote": "Remote"
+    },
+    "types": {
+      "contract": "Contract",
+      "permanent": "Vast",
+      "freelance": "Freelance",
+      "interim": "Interim"
+    }
   }
 }

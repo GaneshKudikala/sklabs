@@ -98,3 +98,53 @@ export const blogPosting = (p: {
   author: { '@type': 'Organization', name: p.author },
   publisher: { '@id': ORG_ID },
 });
+
+const EMPLOYMENT = {
+  contract: 'CONTRACTOR',
+  freelance: 'CONTRACTOR',
+  permanent: 'FULL_TIME',
+  interim: 'TEMPORARY',
+} as const;
+
+/** JobPosting JSON-LD. Returns null while key fields are still [PLACEHOLDER]s. */
+export const jobPosting = (j: {
+  title: string;
+  description: string;
+  url: string;
+  location: string;
+  workMode: 'onsite' | 'hybrid' | 'remote';
+  employmentType: keyof typeof EMPLOYMENT;
+  posted: Date;
+  validThrough?: Date;
+  lang: string;
+}) => {
+  const remote = j.workMode === 'remote';
+  if (isPlaceholder(j.title) || (!remote && isPlaceholder(j.location))) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: j.title,
+    description: j.description,
+    url: j.url,
+    datePosted: j.posted.toISOString().slice(0, 10),
+    ...(j.validThrough ? { validThrough: j.validThrough.toISOString().slice(0, 10) } : {}),
+    employmentType: EMPLOYMENT[j.employmentType],
+    inLanguage: j.lang,
+    hiringOrganization: { '@id': ORG_ID },
+    ...(remote
+      ? {
+          jobLocationType: 'TELECOMMUTE',
+          applicantLocationRequirements: { '@type': 'Country', name: 'Netherlands' },
+        }
+      : {
+          jobLocation: {
+            '@type': 'Place',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: j.location,
+              addressCountry: 'NL',
+            },
+          },
+        }),
+  };
+};

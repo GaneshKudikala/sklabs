@@ -11,7 +11,7 @@ const services = defineCollection({
     summary: z.string(),
     seoTitle: z.string().optional(),
     seoDescription: z.string(),
-    icon: z.enum(['cloud', 'life-buoy', 'workflow', 'shield-check', 'bot']),
+    icon: z.enum(['cloud', 'life-buoy', 'workflow', 'shield-check', 'bot', 'users']),
     order: z.number(),
     draft: z.boolean().default(false),
     problem: z.string(),
@@ -74,4 +74,32 @@ const caseStudies = defineCollection({
   }),
 });
 
-export const collections = { services, products, pages, blog, 'case-studies': caseStudies };
+const jobs = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/jobs' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    location: z.string(), // city, or "[LOCATION]" until known; customer sites can be named generically
+    workMode: z.enum(['onsite', 'hybrid', 'remote']),
+    employmentType: z.enum(['contract', 'permanent', 'freelance', 'interim']),
+    posted: z.coerce.date(),
+    validThrough: z.coerce.date().optional(),
+    status: z.enum(['open', 'closed']).default('open'),
+    level: z.string().optional(),
+    responsibilities: z.array(z.string()),
+    requirements: z.array(z.string()),
+    niceToHave: z.array(z.string()).default([]),
+    skills: z.array(z.string()).default([]),
+    compensation: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = {
+  jobs,
+  services,
+  products,
+  pages,
+  blog,
+  'case-studies': caseStudies,
+};

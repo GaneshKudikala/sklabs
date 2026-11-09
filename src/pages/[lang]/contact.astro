@@ -87,6 +87,7 @@ const label = 'block text-sm font-semibold text-ink-950';
             {services.map((s) => (
               <option value={s.slug}>{s.data.title}</option>
             ))}
+            <option value="careers">{c.interestCareers}</option>
             <option value="other">{c.interestOther}</option>
           </select>
         </div>
@@ -115,6 +116,17 @@ const label = 'block text-sm font-semibold text-ink-950';
           maxlength="4000"
         ></textarea>
       </div>
+      {siteKey && <div class="cf-turnstile" data-sitekey={siteKey} data-language={lang} />}
+      <p
+        id="form-status"
+        role="status"
+        aria-live="polite"
+        data-sending={c.sending}
+        data-success={c.success}
+        data-error={c.error}
+        data-captcha={c.captcha}
+        data-ratelimited={c.rateLimited}
+      ></p>
       <p class="text-sm text-ink-500">
         {c.privacy}{' '}
         <a class="font-semibold text-accent-600 underline" href={localePath(lang, 'legal/privacy')}>

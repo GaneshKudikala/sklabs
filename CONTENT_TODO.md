@@ -29,3 +29,7 @@ All NL files carry `draft: true` and show a "draft translation" notice. For each
 - Have the legal pages reviewed
 - Complete the Cloudflare, Resend and Turnstile steps in the README
 - Add case studies to `src/content/case-studies/{en,nl}` when you have real ones (the Work nav item stays hidden until then)
+
+## Staffing / placement: check before launch
+
+Placing consultants at customer sites can fall under Dutch staffing rules (detachering vs. uitzenden, Wet DBA / false self-employment, ABU/NBBU, WAADI registration, VAR/DBA for freelancers, payrolling). Confirm with an adviser which model you operate, and make the service page and job postings match it. The privacy policy also needs a section on candidate data (CVs and application emails) with a retention period.

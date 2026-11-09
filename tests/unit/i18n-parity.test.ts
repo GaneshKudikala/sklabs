@@ -25,7 +25,7 @@ describe('translations', () => {
     expect(shape(nl).sort()).toEqual(shape(en).sort());
   });
 
-  for (const collection of ['services', 'products', 'pages', 'blog']) {
+  for (const collection of ['services', 'products', 'pages', 'blog', 'jobs']) {
     it(`every EN ${collection} file has an NL counterpart and vice versa`, () => {
       const base = join('src/content', collection);
       const files = (lang: string) =>
@@ -37,9 +37,9 @@ describe('translations', () => {
   }
 
   it('NL content files are flagged draft until reviewed', () => {
-    const offenders = ['services', 'products', 'pages', 'blog'].flatMap((c) =>
+    const offenders = ['services', 'products', 'pages', 'blog', 'jobs'].flatMap((c) =>
       walk(join('src/content', c, 'nl')).filter(
-        (p) => !/^draft:\s*true/m.test(readFileSync(p, 'utf8')),
+        (p) => p.endsWith('.md') && !/^draft:\s*true/m.test(readFileSync(p, 'utf8')),
       ),
     );
     // Remove a file from review by deleting its `draft: true` line; this test then lists it.

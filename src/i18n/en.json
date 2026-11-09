@@ -14,7 +14,8 @@
     "menu": "Menu",
     "skip": "Skip to content",
     "language": "Language",
-    "main": "Main navigation"
+    "main": "Main navigation",
+    "careers": "Careers"
   },
   "footer": {
     "tagline": "Cloud, DevOps, security and AI engineering. Built in the Netherlands.",
@@ -35,7 +36,7 @@
     "ctaPrimary": "Book a call",
     "ctaSecondary": "Explore services",
     "servicesTitle": "What we do",
-    "servicesLead": "Five practices that cover the cloud lifecycle, from foundation to AI.",
+    "servicesLead": "Practices that cover the cloud lifecycle, from foundation to AI, plus consultants placed at your site.",
     "learnMore": "Learn more",
     "cloudsTitle": "Multi-cloud by experience",
     "cloudsLead": "We work across the major public clouds.",
@@ -150,7 +151,8 @@
     "success": "Thanks. Your message has been sent and we will reply soon.",
     "error": "Something went wrong. Please try again or email us directly.",
     "captcha": "Please complete the spam check and try again.",
-    "rateLimited": "Too many attempts. Please try again later."
+    "rateLimited": "Too many attempts. Please try again later.",
+    "interestCareers": "Careers / job application"
   },
   "legalUpdated": "Last updated",
   "insights": {
@@ -177,5 +179,43 @@
     "sector": "Sector",
     "back": "All work",
     "readMore": "Read case study"
+  },
+  "careers": {
+    "title": "Careers",
+    "description": "Open positions and consultant roles at customer locations with SK LABS.",
+    "lead": "We place experienced cloud, DevOps, security and AI consultants with customers, and we are always interested in hearing from good engineers.",
+    "introTitle": "Work with SK LABS",
+    "intro": "[CAREERS_INTRO] Tell us what you are good at and what you want to work on next.",
+    "openTitle": "Open positions",
+    "empty": "There are no open positions right now. Send us your profile and we will get in touch when something fits.",
+    "apply": "Apply",
+    "applySpontaneous": "Send your profile",
+    "spontaneousTitle": "Don't see a fit?",
+    "spontaneousBody": "We place consultants at customer locations on a rolling basis. Send a short note about your experience.",
+    "location": "Location",
+    "workMode": "Work mode",
+    "type": "Type",
+    "level": "Level",
+    "compensation": "Compensation",
+    "posted": "Posted",
+    "responsibilities": "What you will do",
+    "requirements": "What you bring",
+    "niceToHave": "Nice to have",
+    "skills": "Skills",
+    "back": "All positions",
+    "readMore": "View position",
+    "applyBody": "Interested? Send us your profile and mention this position.",
+    "applyPrefix": "Application for",
+    "modes": {
+      "onsite": "On site",
+      "hybrid": "Hybrid",
+      "remote": "Remote"
+    },
+    "types": {
+      "contract": "Contract",
+      "permanent": "Permanent",
+      "freelance": "Freelance",
+      "interim": "Interim"
+    }
   }
 }
