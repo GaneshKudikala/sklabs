@@ -6,6 +6,7 @@ import SEO from '../components/SEO.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { useT, type Lang } from '../i18n';
 import { ogSlug } from '../lib/og';
+import { getCaseStudies } from '../i18n/content';
 import { organization } from '../lib/schema';
 
 interface Props {
@@ -24,8 +25,7 @@ const pathname = Astro.url.pathname;
 const site = Astro.site ?? new URL('https://sklabs.nl');
 const image = new URL(`/og/${lang}/${ogImageSlug ?? ogSlug(pathname)}.png`, site).href;
 const fullTitle = title === t.meta.siteName ? title : `${title} | ${t.meta.siteName}`;
-// Flip to true once case studies exist (see src/content/case-studies).
-const showWork = false;
+const showWork = (await getCaseStudies(lang)).length > 0;
 ---
 
 <!doctype html>

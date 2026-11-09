@@ -17,3 +17,15 @@ Every `[PLACEHOLDER]` that needs real content. Updated each milestone.
 - Create a Cloudflare Turnstile widget for sklabs.nl: set `PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET`
 - Set `CONTACT_TO_EMAIL` (and optionally `CONTACT_FROM_EMAIL`) in Cloudflare Pages
 - Optional: create a KV namespace bound as `RATE_LIMIT`, and a WAF rate-limit rule on `/api/contact`
+
+## Dutch review (M6)
+
+All NL files carry `draft: true` and show a "draft translation" notice. For each file you approve, delete the `draft: true` line (the unit test `i18n-parity` will then list it as an offender; update the test to an allowlist or remove that check once the review is finished). Files to review: `src/i18n/nl.json`, `src/content/{services,products,pages,blog}/nl/**`.
+
+## Before launch checklist
+
+- Replace every `[PLACEHOLDER]` above (search the repo for `\[[A-Z_0-9]+\]`)
+- Replace the wordmark in `src/components/Wordmark.astro` and `public/favicon.svg` (also used as the Organization logo in JSON-LD; consider a PNG logo of at least 112x112 for search engines)
+- Have the legal pages reviewed
+- Complete the Cloudflare, Resend and Turnstile steps in the README
+- Add case studies to `src/content/case-studies/{en,nl}` when you have real ones (the Work nav item stays hidden until then)
