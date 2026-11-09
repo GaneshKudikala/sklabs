@@ -15,7 +15,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "astro check",
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:unit": "vitest run",
+    "dev:functions": "pnpm build && wrangler pages dev dist",
+    "check:functions": "tsc -p functions/tsconfig.json"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "@cloudflare/workers-types": "^5.20261108.1",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.65.0",
     "@tailwindcss/typography": "^0.5.20",
@@ -40,7 +44,9 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.1"
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0",
+    "wrangler": "^4.158.0"
   },
   "private": "true"
 }

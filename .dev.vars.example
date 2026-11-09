@@ -1,0 +1,5 @@
+# Copy to .dev.vars for `pnpm dev:functions` (wrangler). Cloudflare's published Turnstile TEST secret always passes.
+RESEND_API_KEY=
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+CONTACT_TO_EMAIL=
+CONTACT_FROM_EMAIL=SK LABS <noreply@sklabs.nl>
