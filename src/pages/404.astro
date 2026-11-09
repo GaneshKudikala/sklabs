@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useT } from '../i18n';
+const t = useT('en');
+---
+
+<BaseLayout lang="en" title={t.notFound.title}>
+  <div class="mx-auto max-w-3xl px-4 py-32 sm:px-6">
+    <h1 class="text-4xl font-bold text-white">{t.notFound.title}</h1>
+    <p class="mt-4 text-ink-300">{t.notFound.body}</p>
+    <a
+      href="/en/"
+      class="mt-8 inline-block rounded-md bg-accent-400 px-5 py-2.5 font-semibold text-ink-950"
+    >
+      {t.notFound.back}
+    </a>
+  </div>
+</BaseLayout>

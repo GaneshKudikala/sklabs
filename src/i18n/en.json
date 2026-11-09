@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "siteName": "SK LABS",
+    "defaultDescription": "SK LABS is a Netherlands-based cloud, DevOps, security and AI consultancy that also builds its own SaaS products."
+  },
+  "nav": {
+    "services": "Services",
+    "products": "Products",
+    "work": "Work",
+    "about": "About",
+    "insights": "Insights",
+    "contact": "Contact",
+    "bookCall": "Book a call",
+    "menu": "Menu",
+    "skip": "Skip to content",
+    "language": "Language",
+    "main": "Main navigation"
+  },
+  "footer": {
+    "tagline": "Cloud, DevOps, security and AI engineering. Built in the Netherlands.",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie statement",
+    "terms": "Terms",
+    "imprint": "Imprint",
+    "rights": "All rights reserved.",
+    "analytics": "Cookieless analytics. No trackers."
+  },
+  "home": {
+    "title": "Cloud, DevOps, security and AI engineering",
+    "description": "SK LABS helps teams build, secure and run cloud platforms and AI systems, with EU data residency in mind.",
+    "heroTitle": "Cloud platforms and AI systems that are secure, reliable and ready to scale.",
+    "heroLead": "[HERO_SUBTEXT]",
+    "ctaPrimary": "Book a call",
+    "ctaSecondary": "Explore services"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist or has moved.",
+    "back": "Back to home"
+  }
+}

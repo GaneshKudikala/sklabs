@@ -1,0 +1,31 @@
+---
+import { locales, stripLocale, localePath, type Lang } from '../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  pathname: string;
+}
+const { title, description, lang, pathname } = Astro.props;
+const site = Astro.site ?? new URL('https://sklabs.nl');
+const rest = stripLocale(pathname);
+const canonical = new URL(pathname, site).href;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{locales.map((l) => (
+  <link rel="alternate" hreflang={l} href={new URL(localePath(l, rest), site).href} />
+))}
+<link rel="alternate" hreflang="x-default" href={new URL(localePath('en', rest), site).href} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="SK LABS" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={lang === 'nl' ? 'nl_NL' : 'en_GB'} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />

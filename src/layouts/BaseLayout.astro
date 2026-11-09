@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import { useT, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+}
+const { lang, title, description } = Astro.props;
+const t = useT(lang);
+const pathname = Astro.url.pathname;
+const fullTitle = title === t.meta.siteName ? title : `${title} | ${t.meta.siteName}`;
+// Flip to true once case studies exist (see src/content/case-studies).
+const showWork = false;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#060a14" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <SEO
+      title={fullTitle}
+      description={description ?? t.meta.defaultDescription}
+      lang={lang}
+      pathname={pathname}
+    />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent-400 focus:px-4 focus:py-2 focus:text-ink-950"
+    >
+      {t.nav.skip}
+    </a>
+    <Header lang={lang} pathname={pathname} showWork={showWork} />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} showWork={showWork} />
+  </body>
+</html>

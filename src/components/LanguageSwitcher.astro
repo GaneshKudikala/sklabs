@@ -1,0 +1,27 @@
+---
+import { locales, localePath, stripLocale, useT, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  pathname: string;
+}
+const { lang, pathname } = Astro.props;
+const t = useT(lang);
+const rest = stripLocale(pathname);
+---
+
+<ul class="flex items-center gap-1 text-xs font-medium" aria-label={t.nav.language}>
+  {locales.map((l) => (
+    <li>
+      <a
+        href={localePath(l, rest)}
+        hreflang={l}
+        lang={l}
+        aria-current={l === lang ? 'true' : undefined}
+        class="rounded px-2 py-1 uppercase text-ink-300 hover:text-white aria-[current=true]:bg-white/10 aria-[current=true]:text-white"
+      >
+        {l}
+      </a>
+    </li>
+  ))}
+</ul>

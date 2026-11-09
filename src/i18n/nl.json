@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "siteName": "SK LABS",
+    "defaultDescription": "SK LABS is een Nederlands cloud-, DevOps-, security- en AI-adviesbureau dat ook eigen SaaS-producten bouwt."
+  },
+  "nav": {
+    "services": "Diensten",
+    "products": "Producten",
+    "work": "Projecten",
+    "about": "Over ons",
+    "insights": "Inzichten",
+    "contact": "Contact",
+    "bookCall": "Plan een gesprek",
+    "menu": "Menu",
+    "skip": "Ga naar inhoud",
+    "language": "Taal",
+    "main": "Hoofdnavigatie"
+  },
+  "footer": {
+    "tagline": "Cloud-, DevOps-, security- en AI-engineering. Gebouwd in Nederland.",
+    "company": "Bedrijf",
+    "legal": "Juridisch",
+    "privacy": "Privacybeleid",
+    "cookies": "Cookieverklaring",
+    "terms": "Voorwaarden",
+    "imprint": "Colofon",
+    "rights": "Alle rechten voorbehouden.",
+    "analytics": "Cookieloze analytics. Geen trackers."
+  },
+  "home": {
+    "title": "Cloud-, DevOps-, security- en AI-engineering",
+    "description": "SK LABS helpt teams cloudplatformen en AI-systemen te bouwen, beveiligen en beheren, met oog voor EU-dataresidentie.",
+    "heroTitle": "Cloudplatformen en AI-systemen die veilig, betrouwbaar en schaalbaar zijn.",
+    "heroLead": "[HERO_SUBTEXT]",
+    "ctaPrimary": "Plan een gesprek",
+    "ctaSecondary": "Bekijk diensten"
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "body": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "back": "Terug naar home"
+  }
+}

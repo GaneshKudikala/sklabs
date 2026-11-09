@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../i18n';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+---
+
+<BaseLayout lang={lang} title={t.home.title} description={t.home.description}>
+  <section class="bg-grid relative overflow-hidden">
+    <div class="mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32">
+      <h1 class="max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-6xl">
+        {t.home.heroTitle}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-300">{t.home.heroLead}</p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href={localePath(lang, 'contact')}
+          class="rounded-md bg-accent-400 px-6 py-3 font-semibold text-ink-950 hover:bg-accent-500"
+        >
+          {t.home.ctaPrimary}
+        </a>
+        <a
+          href={localePath(lang, 'services')}
+          class="rounded-md border border-white/20 px-6 py-3 font-semibold text-white hover:bg-white/5"
+        >
+          {t.home.ctaSecondary}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
