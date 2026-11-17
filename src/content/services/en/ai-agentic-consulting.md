@@ -4,18 +4,37 @@ summary: Strategy, LLM and RAG applications, agentic workflows and AI governance
 seoDescription: Agentic AI consulting in the Netherlands. LLM and RAG applications on AWS Bedrock, Azure OpenAI and Vertex AI, with AI governance and EU AI Act readiness.
 icon: bot
 order: 5
-problem: Many AI pilots never reach production. Teams lack a clear use case, reliable data access, evaluation, and a view on risk and regulation.
-whatWeDo:
-  - Define AI strategy and pick use cases with measurable outcomes
-  - Build LLM and retrieval-augmented generation (RAG) applications
-  - Design agentic workflows with tools, guardrails and human oversight
-  - Deploy on AWS Bedrock, Azure OpenAI or Google Vertex AI
-  - Set up AI governance and prepare for the EU AI Act
-deliverables:
-  - Use case assessment and roadmap
-  - Working prototype or production application
-  - Evaluation setup to measure quality over time
-  - Governance framework and documentation
+achieve:
+  - title: Focus on use cases that matter
+    points:
+      - Define an AI strategy and choose use cases with measurable outcomes.
+      - Be clear up front about data access, risk and what good looks like.
+  - title: Build applications that work in production
+    points:
+      - Design and build LLM and retrieval-augmented generation (RAG) applications.
+      - Set up evaluation so quality can be measured and improved over time.
+  - title: Put agents to work, safely
+    points:
+      - Design agentic workflows with tools, guardrails and human oversight.
+      - Keep people in the loop where decisions carry risk.
+  - title: Stay in control
+    points:
+      - Deploy on AWS Bedrock, Azure OpenAI or Google Vertex AI, chosen to fit your cloud and data requirements.
+      - Set up AI governance and prepare for the EU AI Act.
+outcomes:
+  - title: From pilot to production
+    body: Promising prototypes become dependable applications with owners and monitoring.
+  - title: Quality you can measure
+    body: Evaluation turns "it seems to work" into numbers you can track and improve.
+  - title: Less manual knowledge work
+    body: Repetitive tasks such as searching, summarising and drafting get faster and more consistent.
+  - title: AI you can govern
+    body: Roles, documentation and controls are in place for internal reviews and regulation.
+  - title: New product opportunities
+    body: A clear view of what the technology can do opens options for your own products and services.
+cta:
+  title: Let's find your first useful AI use case
+  body: Tell us about your data and your goals, and we will suggest a focused starting point.
 engagement:
   assessment: An AI readiness and use case workshop with a prioritised plan.
   project: A defined build from prototype to production with evaluation in place.

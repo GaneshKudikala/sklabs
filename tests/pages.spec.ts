@@ -20,6 +20,10 @@ for (const lang of ['en', 'nl'] as const) {
       await page.goto(`/${lang}/services/${slug}/`);
       await expect(page.locator('h1')).toBeVisible();
       await expect(page.locator('main details').first()).toBeVisible();
+      // New layout: grouped achievements and numbered outcomes
+      await expect(page.locator('main h2', { hasText: /achieve|bereikt/i })).toBeVisible();
+      await expect(page.locator('main ol > li').first()).toContainText('01');
+      expect(await page.locator('main ol > li').count()).toBeGreaterThanOrEqual(3);
     });
   }
 

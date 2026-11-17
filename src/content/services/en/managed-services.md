@@ -4,17 +4,36 @@ summary: 24/7 monitoring, FinOps, patching and clear SLAs so your platform just 
 seoDescription: Managed cloud services in the Netherlands. 24/7 monitoring, cost optimisation (FinOps), patching and SLA-backed operations.
 icon: life-buoy
 order: 2
-problem: Running production takes constant attention. Alerts get ignored, patches slip, and cloud bills grow without anyone asking why.
-whatWeDo:
-  - Monitor your platform around the clock and respond to incidents
-  - Keep systems patched and compliant with an agreed schedule
-  - Review spend regularly and cut waste through FinOps practices
-  - Report on availability, incidents and cost in plain language
-deliverables:
-  - Monitoring and alerting setup with defined escalation paths
-  - Service level agreement with clear scope and response targets
-  - Monthly operations and cost report
-  - Runbooks for recurring incidents
+achieve:
+  - title: Keep your platform running
+    points:
+      - Monitor around the clock and respond to incidents along agreed escalation paths.
+      - Patch and maintain systems on a schedule you can rely on.
+  - title: Take control of cloud spend
+    points:
+      - Review spending regularly with FinOps practices and remove waste.
+      - Align cost with what the business actually needs.
+  - title: Know how you are doing
+    points:
+      - Receive clear monthly reports on availability, incidents and cost.
+      - Work to an SLA with a defined scope and response targets.
+  - title: Free up your team
+    points:
+      - Hand routine operations to us so your engineers can focus on the product.
+outcomes:
+  - title: Fewer surprises in production
+    body: Problems are spotted and handled early, with runbooks for the incidents that keep coming back.
+  - title: Predictable cloud bills
+    body: Regular cost reviews turn spend into something you can explain and plan.
+  - title: Clear accountability
+    body: A written SLA makes scope, hours and response targets explicit.
+  - title: More engineering time for the product
+    body: Routine operations no longer compete with feature work.
+  - title: Audit-ready operations
+    body: Patching, logging and incident history are documented and easy to show.
+cta:
+  title: Let's take operations off your plate
+  body: Tell us what you run today and we will propose a scope and an SLA.
 engagement:
   assessment: An operational readiness review covering monitoring, backups and incident handling.
   project: Onboarding that brings your platform under management with documented runbooks.

@@ -4,17 +4,36 @@ summary: Landing zones, migrations and infrastructure as code on AWS, Azure and 
 seoDescription: AWS, Azure and Google Cloud infrastructure and migration consultancy in the Netherlands. Landing zones, Terraform and EU-first architecture.
 icon: cloud
 order: 1
-problem: Cloud environments grow organically. Accounts, networks and permissions drift, costs climb, and migrations stall because nobody owns the foundation.
-whatWeDo:
-  - Design multi-account landing zones with guardrails, networking and identity from day one
-  - Plan and execute migrations from on-premises or between clouds
-  - Codify everything in Terraform so environments are reproducible and reviewable
-  - Choose regions and services with EU data residency in mind
-deliverables:
-  - Target architecture and decision records
-  - Landing zone implemented as code
-  - Migration runbooks and cutover plan
-  - Documentation and hand-over sessions for your team
+achieve:
+  - title: Build a solid cloud foundation
+    points:
+      - Set up multi-account landing zones with networking, identity and guardrails in place from day one.
+      - Define everything in Terraform so environments are consistent, reviewable and easy to repeat.
+  - title: Migrate with confidence
+    points:
+      - Plan and run migrations from on-premises or between clouds with clear runbooks and cutover plans.
+      - Test the move before production depends on it, so there are fewer surprises on the day.
+  - title: Keep data where it belongs
+    points:
+      - Choose regions and services with EU data residency in mind.
+      - Document where data lives and who can reach it, ready for customers and auditors.
+  - title: Hand over a platform your team can own
+    points:
+      - Leave behind documentation and working sessions with your engineers, not a black box.
+outcomes:
+  - title: Repeatable environments
+    body: Create new environments from code instead of by hand, and rebuild them when needed.
+  - title: Lower operational risk
+    body: Guardrails block risky configurations such as public storage or missing logging before they reach production.
+  - title: Clearer cost ownership
+    body: Account structure and tagging show where spend comes from and who owns it.
+  - title: Smoother migrations
+    body: Clear plans and runbooks reduce disruption during cutover.
+  - title: An EU-ready foundation
+    body: Region choices, access and data locations are documented for audits and customer questions.
+cta:
+  title: Let's plan your cloud foundation
+  body: Tell us where you are today and we will suggest a sensible first step.
 engagement:
   assessment: A short, fixed-scope review of your current estate with a prioritised plan.
   project: A defined build or migration with milestones, delivered alongside your team.

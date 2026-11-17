@@ -41,3 +41,7 @@ Placing consultants at customer sites can fall under Dutch staffing rules (detac
 - The imprint says the legal name is SK Software Solutions and that it trades as SK LABS. Confirm SK LABS is a registered trade name (handelsnaam) in the KVK extract, or tell me the correct wording.
 - Add the vestigingsnummer (establishment number) and the registered address from the KVK extract if you want them shown.
 - Jobs, Hire Talent and Products are switched off in `src/content/site.json`; the recruitment licence line and candidate-privacy section are needed before turning on Jobs or Hire.
+
+## Review the new service and FAQ copy
+
+Service pages now use "What you'll achieve" and "Outcomes we enable" (`achieve`, `outcomes`, `cta` in each `src/content/services/*/*.md`). The outcomes are phrased as things a client can expect from the approach, with no metrics. Remove or soften any line that does not match how you actually work. Two FAQ answers describe practice ("we agree access in writing before work starts", "we aim to use least-privilege roles through your identity provider"): confirm they are true for you.

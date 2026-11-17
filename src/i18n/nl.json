@@ -16,7 +16,8 @@
     "language": "Taal",
     "main": "Hoofdnavigatie",
     "jobs": "Vacatures",
-    "hire": "Talent inhuren"
+    "hire": "Talent inhuren",
+    "faq": "FAQ"
   },
   "footer": {
     "tagline": "Cloud-, DevOps-, security- en AI-engineering. Gebouwd in Nederland.",
@@ -103,9 +104,6 @@
     "title": "Diensten",
     "description": "Cloud, managed services, DevOps, security en AI-advies van SK LABS.",
     "lead": "Kies een specialisme, of praat met ons over een combinatie.",
-    "problem": "Het probleem",
-    "whatWeDo": "Wat we doen",
-    "deliverables": "Oplevering",
     "engagement": "Samenwerkingsvormen",
     "faq": "Veelgestelde vragen",
     "assessment": "Assessment",
@@ -115,7 +113,9 @@
     "ctaBody": "Vertel waar je staat en we stellen een verstandige eerste stap voor.",
     "ctaButton": "Plan een gesprek",
     "all": "Alle diensten",
-    "draftNotice": "Deze vertaling is een concept."
+    "draftNotice": "Deze vertaling is een concept.",
+    "achieve": "Wat je bereikt",
+    "outcomes": "Resultaten die we mogelijk maken"
   },
   "products": {
     "statusLive": "Live",
@@ -283,5 +283,14 @@
     "title": "Talent inhuren",
     "description": "Huur cloud-, DevOps-, SRE-, security- en data/AI-engineers in Nederland in. Vaste plaatsing, contractspecialisten en teamversterking, gescreend door engineers.",
     "button": "Deel je vacature met ons"
+  },
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "description": "Antwoorden op veelgestelde vragen over de diensten van SK LABS, onze werkwijze met klanten, security en data, en AI.",
+    "lead": "Directe antwoorden op de vragen die we het vaakst horen.",
+    "more": "Meer vragen en antwoorden",
+    "ctaTitle": "Nog een vraag?",
+    "ctaBody": "Stuur ons een bericht en we reageren binnen [RESPONSE_TIME].",
+    "ctaButton": "Neem contact op"
   }
 }

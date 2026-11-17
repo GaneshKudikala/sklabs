@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Section from '../../components/Section.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import FaqList from '../../components/FaqList.astro';
+import { getStaticLangPaths, localePath, useT, type Lang } from '../../i18n';
+import { getPage } from '../../i18n/content';
+import { breadcrumbs, faqPage } from '../../lib/schema';
+
+export const getStaticPaths = getStaticLangPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const page = (await getPage(lang, 'faq'))!;
+const groups = page.data.faqGroups ?? [];
+const site = Astro.site!.origin;
+---
+
+<BaseLayout
+  lang={lang}
+  title={t.faq.title}
+  description={t.faq.description}
+  schema={[
+    faqPage(groups.flatMap((g) => g.items)),
+    breadcrumbs([
+      { name: 'SK LABS', url: `${site}/${lang}/` },
+      { name: t.faq.title, url: `${site}${localePath(lang, 'faq')}` },
+    ]),
+  ]}
+>
+  <PageHeader
+    title={t.faq.title}
+    lead={t.faq.lead}
+    draftNotice={page.data.draft ? t.services.draftNotice : undefined}
+  />
+  {groups.map((g, i) => (
+    <Section tone={i % 2 === 0 ? 'default' : 'muted'} title={g.title}>
+      <FaqList items={g.items} />
+    </Section>
+  ))}
+  <CtaBand
+    title={t.faq.ctaTitle}
+    body={t.faq.ctaBody}
+    button={t.faq.ctaButton}
+    href={localePath(lang, 'contact')}
+  />
+</BaseLayout>
