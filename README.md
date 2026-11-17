@@ -33,7 +33,8 @@ Legal name, KVK number and trade name live in `src/content/site.json` and appear
 
 ## Adding content
 
-- **Service:** add `src/content/services/en/<slug>.md` and the same filename under `nl/`. Frontmatter fields are defined in `src/content.config.ts` (problem, whatWeDo, deliverables, engagement, faq). Service JSON-LD and FAQPage are generated automatically.
+- **Service:** add `src/content/services/en/<slug>.md` and the same filename under `nl/`. Fields are defined in `src/content.config.ts`: `achieve` (grouped bullets under "What you'll achieve"), `outcomes` (numbered cards), `cta`, `engagement` and `faq`. Service and FAQPage JSON-LD are generated automatically.
+- **Site FAQ:** edit `src/content/pages/{en,nl}/faq.md` (`faqGroups`). It lives at `/faq/` and also emits FAQPage JSON-LD.
 - **Product:** add `src/content/products/{en,nl}/<slug>.md` (`status`: `live`, `beta`, `coming-soon`). SoftwareApplication JSON-LD is emitted only when the name is not a `[PLACEHOLDER]`.
 - **Blog post:** add `src/content/blog/{en,nl}/<slug>.md` with `title`, `description`, `date`, `tags`. Tag pages, RSS (`/en/rss.xml`) and the sitemap update on build.
 - **Case study:** add `src/content/case-studies/{en,nl}/<slug>.md` (see schema in `src/content.config.ts`; use `client: "[CLIENT]"` until the client approves being named). The Work nav item, pages and OG images appear automatically for a language once it has at least one case study. Never publish invented clients or metrics.

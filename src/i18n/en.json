@@ -16,7 +16,8 @@
     "language": "Language",
     "main": "Main navigation",
     "jobs": "Jobs",
-    "hire": "Hire Talent"
+    "hire": "Hire Talent",
+    "faq": "FAQ"
   },
   "footer": {
     "tagline": "Cloud, DevOps, security and AI engineering. Built in the Netherlands.",
@@ -103,9 +104,6 @@
     "title": "Services",
     "description": "Cloud, managed services, DevOps, security and AI consulting from SK LABS.",
     "lead": "Pick a practice, or talk to us about a mix.",
-    "problem": "The problem",
-    "whatWeDo": "What we do",
-    "deliverables": "Deliverables",
     "engagement": "Engagement models",
     "faq": "Frequently asked questions",
     "assessment": "Assessment",
@@ -115,7 +113,9 @@
     "ctaBody": "Tell us where you are and we will suggest a sensible first step.",
     "ctaButton": "Book a call",
     "all": "All services",
-    "draftNotice": "This translation is a draft."
+    "draftNotice": "This translation is a draft.",
+    "achieve": "What you'll achieve",
+    "outcomes": "Outcomes we enable"
   },
   "products": {
     "statusLive": "Live",
@@ -283,5 +283,14 @@
     "title": "Hire Talent",
     "description": "Hire cloud, DevOps, SRE, security and data/AI engineers in the Netherlands. Permanent placement, contract specialists and team augmentation, screened by engineers.",
     "button": "Brief us on your role"
+  },
+  "faq": {
+    "title": "FAQ",
+    "description": "Answers to common questions about SK LABS services, how we work with clients, security and data, and AI.",
+    "lead": "Straight answers to the questions we hear most.",
+    "more": "More questions and answers",
+    "ctaTitle": "Still have a question?",
+    "ctaBody": "Send us a message and we will reply within [RESPONSE_TIME].",
+    "ctaButton": "Contact us"
   }
 }

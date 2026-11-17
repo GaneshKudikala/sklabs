@@ -6,17 +6,36 @@ icon: users
 order: 6
 requires: hire
 draft: true
-problem: Goede cloud- en securityengineers vinden kost maanden, generieke recruiters begrijpen het werk niet en projecten kunnen niet altijd wachten op de juiste persoon.
-whatWeDo:
-  - Vaste plaatsing van engineers en engineering leads
-  - Contract- en freelancespecialisten voor projecten en tijdelijke gaten
-  - Teamversterking, met consultants die binnen jouw team en omgeving werken
-  - Technische screening door engineers, geen keyword-matching
-deliverables:
-  - Een helder rolprofiel, afgesproken scope en planning
-  - Een shortlist van gescreende, relevante kandidaten
-  - Coördinatie van gesprekken en feedbackrondes
-  - Begeleiding bij het aanbod, onboarding en de eerste weken
+achieve:
+  - title: Neem de juiste engineers aan
+    points:
+      - Plaats vaste engineers en engineering leads in cloud, DevOps, SRE, security en data/AI.
+      - Screen kandidaten technisch, uitgevoerd door engineers in plaats van keyword-matching.
+  - title: Voeg snel capaciteit toe
+    points:
+      - Haal contract- en freelancespecialisten binnen voor projecten en tijdelijke gaten.
+      - Versterk je team met consultants die binnen jouw omgeving werken.
+  - title: Maak werven makkelijker
+    points:
+      - Spreek een helder rolprofiel af en ontvang een shortlist van relevante kandidaten.
+      - Wij coördineren gesprekken en feedback en ondersteunen het aanbod en de eerste weken.
+  - title: Dek de specialismen die ertoe doen
+    points:
+      - Cloud, DevOps, SRE, security en data/AI-engineering.
+outcomes:
+  - title: Minder maar beter passende profielen
+    body: Door technische screening beoordeel je kandidaten die bij het werk passen.
+  - title: Flexibele capaciteit
+    body: Schaal specialistische capaciteit op of af naarmate projecten veranderen.
+  - title: Een sterkere technische match
+    body: Engineers die de rol begrijpen spreken kandidaten voordat jij dat doet.
+  - title: Minder wervingsinspanning voor je team
+    body: Wij regelen sourcing, coördinatie en opvolging zodat managers gefocust blijven.
+  - title: Een soepele start
+    body: Ondersteuning bij het aanbod en de eerste weken helpt mensen te landen.
+cta:
+  title: Vertel ons over de rol
+  body: Deel de rol, de omgeving en de planning, en we komen terug met een eerste beeld van de markt.
 engagement:
   assessment: Een kort intakegesprek om rol, vaardigheden, budget en planning te bepalen, met een eerste beeld van de markt.
   project: Een afgebakende search of een projectteam geplaatst voor de duur van een opdracht.

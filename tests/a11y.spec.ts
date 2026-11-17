@@ -8,6 +8,7 @@ const pages = [
   'products/',
   'products/product-1/',
   'about/',
+  'faq/',
   'jobs/',
   'jobs/senior-aws-devops-engineer/',
   'hire/',

@@ -44,6 +44,7 @@ export async function ogEntries(): Promise<OgEntry[]> {
       out.push({ lang, slug: 'jobs', title: t.jobs.title, description: t.jobs.description });
     const pageKeys = [
       'about',
+      'faq',
       'legal/privacy',
       'legal/cookies',
       'legal/terms',

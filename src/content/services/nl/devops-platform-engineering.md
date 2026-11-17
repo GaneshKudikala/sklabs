@@ -5,17 +5,36 @@ seoDescription: DevOps-adviesbureau in Nederland. CI/CD-pipelines, Kubernetes, G
 icon: workflow
 order: 3
 draft: true
-problem: Releases zijn traag of risicovol, omgevingen verschillen en engineers besteden meer tijd aan tooling dan aan het product.
-whatWeDo:
-  - CI/CD-pipelines bouwen met tests, securitychecks en geautomatiseerde uitrol
-  - Kubernetesplatformen beheren en GitOps toepassen voor declaratieve levering
-  - Interne platformen en golden paths maken die teams zelf kunnen gebruiken
-  - Metrics, logs en traces toevoegen zodat problemen eerder gevonden worden dan door klanten
-deliverables:
-  - Pipelines en deployment-workflows als code
-  - Kubernetesplatform of managed cluster
-  - Observability-stack met dashboards en alerts
-  - Ontwikkelaarsdocumentatie en onboarding
+achieve:
+  - title: Lever vaker op, met minder risico
+    points:
+      - Bouw CI/CD-pipelines met tests, securitychecks en geautomatiseerde uitrol.
+      - Gebruik GitOps zodat levering declaratief, reviewbaar en controleerbaar is.
+  - title: Geef teams een platform dat ze zelf kunnen gebruiken
+    points:
+      - Maak interne platformen en golden paths die repetitieve inrichting wegnemen.
+      - Beheer Kubernetesplatformen die betrouwbaar en goed gedocumenteerd zijn.
+  - title: Zie problemen vroeg
+    points:
+      - Voeg metrics, logs en traces toe zodat problemen gevonden worden voordat klanten ze vinden.
+      - Koppel alerts aan wat ertoe doet, zodat mensen alleen voor echte problemen worden gebeld.
+  - title: Laat vaardigheden in je team groeien
+    points:
+      - Werk naast je engineers en laat documentatie en onboarding achter die blijven werken.
+outcomes:
+  - title: Een kortere weg naar productie
+    body: Wijzigingen gaan van commit naar release via een pipeline die iedereen vertrouwt.
+  - title: Betrouwbaardere releases
+    body: Geautomatiseerde checks en gefaseerde uitrol vangen problemen op voordat ze zich verspreiden.
+  - title: Minder tooling-gedoe
+    body: Teams besteden tijd aan het product in plaats van aan inrichting en losse scripts.
+  - title: Snellere diagnose
+    body: Goede observability verkort de tijd tussen een alert en een antwoord.
+  - title: Consistente omgevingen
+    body: Ontwikkeling, test en productie gedragen zich gelijk omdat ze op dezelfde manier zijn gebouwd.
+cta:
+  title: Laten we verbeteren hoe je oplevert
+  body: Vertel waar levering het meest knelt en we stellen voor waar te beginnen.
 engagement:
   assessment: Een delivery- en platformreview die de grootste knelpunten in kaart brengt.
   project: Implementatie van een pipeline-, cluster- of platformcapaciteit samen met je team.

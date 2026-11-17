@@ -5,17 +5,36 @@ seoDescription: Hire cloud, DevOps, SRE, security and data/AI engineers in the N
 icon: users
 order: 6
 requires: hire
-problem: Hiring good cloud and security engineers takes months, generic recruiters do not understand the work, and projects cannot always wait for the right person.
-whatWeDo:
-  - Permanent placement of engineers and engineering leads
-  - Contract and freelance specialists for projects and gaps
-  - Team augmentation, with consultants who work inside your team and environment
-  - Technical screening carried out by engineers, not keyword matching
-deliverables:
-  - A clear role profile, agreed scope and timeline
-  - A shortlist of screened, relevant candidates
-  - Interview coordination and feedback loops
-  - Support through the offer, onboarding and the first weeks
+achieve:
+  - title: Hire the right engineers
+    points:
+      - Place permanent engineers and engineering leads in cloud, DevOps, SRE, security and data/AI.
+      - Screen candidates technically, carried out by engineers rather than keyword matching.
+  - title: Add capacity quickly
+    points:
+      - Bring in contract and freelance specialists for projects and gaps.
+      - Extend your team with consultants who work inside your environment.
+  - title: Make hiring easier
+    points:
+      - Agree a clear role profile, then receive a shortlist of relevant candidates.
+      - We coordinate interviews and feedback, and support the offer and first weeks.
+  - title: Cover the specialisms that matter
+    points:
+      - Cloud, DevOps, SRE, security and data/AI engineering.
+outcomes:
+  - title: Fewer, better-fitting profiles
+    body: Technical screening means you review candidates who match the work.
+  - title: Flexible capacity
+    body: Scale specialist capacity up or down as projects change.
+  - title: A stronger technical fit
+    body: Engineers who understand the role talk to candidates before you do.
+  - title: Less hiring effort for your team
+    body: We handle sourcing, coordination and follow-up so managers stay focused.
+  - title: A smoother start
+    body: Support through the offer and the first weeks helps people settle in.
+cta:
+  title: Tell us about the role
+  body: Share the role, the environment and the timeline, and we will come back with a first view of the market.
 engagement:
   assessment: A short intake call to define the role, skills, budget and timeline, with a first view of the market.
   project: A defined search or a project team placed for the length of an assignment.

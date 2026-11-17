@@ -15,9 +15,9 @@ const services = defineCollection({
     order: z.number(),
     draft: z.boolean().default(false),
     requires: z.enum(['jobs', 'hire', 'products']).optional(), // hidden while that feature is off
-    problem: z.string(),
-    whatWeDo: z.array(z.string()),
-    deliverables: z.array(z.string()),
+    achieve: z.array(z.object({ title: z.string(), points: z.array(z.string()).min(1) })).min(2),
+    outcomes: z.array(z.object({ title: z.string(), body: z.string() })).min(3),
+    cta: z.object({ title: z.string(), body: z.string() }),
     engagement: z.object({ assessment: z.string(), project: z.string(), retainer: z.string() }),
     faq,
   }),
@@ -44,6 +44,14 @@ const pages = defineCollection({
     description: z.string(),
     draft: z.boolean().default(false),
     updated: z.string().optional(),
+    faqGroups: z
+      .array(
+        z.object({
+          title: z.string(),
+          items: z.array(z.object({ q: z.string(), a: z.string() })).min(1),
+        }),
+      )
+      .optional(),
   }),
 });
 
