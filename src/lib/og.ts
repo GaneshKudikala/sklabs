@@ -1,3 +1,4 @@
+import { features } from './features';
 import { locales, useT, type Lang } from '../i18n';
 import {
   getServices,
@@ -29,12 +30,27 @@ export async function ogEntries(): Promise<OgEntry[]> {
     out.push(
       { lang, slug: 'home', title: t.home.title, description: t.home.description },
       { lang, slug: 'services', title: t.services.title, description: t.services.description },
-      { lang, slug: 'products', title: t.products.title, description: t.products.description },
-      { lang, slug: 'jobs', title: t.jobs.title, description: t.jobs.description },
       { lang, slug: 'insights', title: t.insights.title, description: t.insights.description },
       { lang, slug: 'contact', title: t.contact.title, description: t.contact.description },
     );
-    for (const key of ['about', 'legal/privacy', 'legal/cookies', 'legal/terms', 'legal/imprint']) {
+    if (features.products)
+      out.push({
+        lang,
+        slug: 'products',
+        title: t.products.title,
+        description: t.products.description,
+      });
+    if (features.jobs)
+      out.push({ lang, slug: 'jobs', title: t.jobs.title, description: t.jobs.description });
+    const pageKeys = [
+      'about',
+      'legal/privacy',
+      'legal/cookies',
+      'legal/terms',
+      'legal/imprint',
+      ...(features.hire ? ['hire'] : []),
+    ];
+    for (const key of pageKeys) {
       const page = await getPage(lang, key);
       if (page)
         out.push({
@@ -51,14 +67,14 @@ export async function ogEntries(): Promise<OgEntry[]> {
         title: s.data.title,
         description: s.data.summary,
       });
-    for (const p of await getProducts(lang))
+    for (const p of features.products ? await getProducts(lang) : [])
       out.push({
         lang,
         slug: `products--${p.slug}`,
         title: p.data.name,
         description: p.data.tagline,
       });
-    for (const j of await getJobs(lang, { includeClosed: true }))
+    for (const j of features.jobs ? await getJobs(lang, { includeClosed: true }) : [])
       out.push({
         lang,
         slug: `jobs--${j.slug}`,

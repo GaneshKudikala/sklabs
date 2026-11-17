@@ -23,6 +23,14 @@ First run of the tests needs `pnpm exec playwright install chromium`.
 - `src/content/` content collections (added in M2+)
 - `public/_headers`, `public/_redirects` Cloudflare security headers and root redirect
 
+## Feature switches (hiding Jobs, Hire Talent, Products)
+
+`src/content/site.json` → `features` controls what is built: `jobs`, `hire`, `products` are currently all `false`. A disabled feature has **no pages, nav or footer links, home blocks, sitemap entries, feeds or OG images** (and the Talent & Recruitment service is hidden with `hire`). To launch one, set it to `true`, commit and deploy. Preview everything locally with `FEATURES_ALL=true pnpm dev` (or `pnpm build`). `pnpm check:hidden` (run in CI after `pnpm build`) fails if a disabled feature leaves any trace in `dist/`.
+
+## Company details
+
+Legal name, KVK number and trade name live in `src/content/site.json` and appear in the footer of every page, the imprint and the structured data (Organization `legalName` and KVK identifier). Legal Markdown pages repeat the KVK number as text; a unit test fails if any copy differs from `site.json`.
+
 ## Adding content
 
 - **Service:** add `src/content/services/en/<slug>.md` and the same filename under `nl/`. Frontmatter fields are defined in `src/content.config.ts` (problem, whatWeDo, deliverables, engagement, faq). Service JSON-LD and FAQPage are generated automatically.

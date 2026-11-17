@@ -9,7 +9,7 @@ _Concept, nog juridisch te toetsen voor publicatie._
 
 ## Wie zijn wij
 
-[LEGAL_NAME], KVK [KVK], [ADDRESS] ("SK LABS", "wij"). Contact: [CONTACT_EMAIL].
+SK Software Solutions, KVK 42206723, [ADDRESS] ("SK LABS", "wij"). Contact: [CONTACT_EMAIL].
 
 ## Wat we verzamelen
 

@@ -9,6 +9,8 @@ export const organization = () => ({
   '@type': 'Organization',
   '@id': ORG_ID,
   name: 'SK LABS',
+  legalName: 'SK Software Solutions',
+  identifier: { '@type': 'PropertyValue', propertyID: 'KVK', value: '42206723' },
   url: SITE,
   logo: `${SITE}/favicon.svg`,
   address: { '@type': 'PostalAddress', addressCountry: 'NL' },

@@ -4,11 +4,12 @@ import PageHeader from '../../../components/PageHeader.astro';
 import Section from '../../../components/Section.astro';
 import CtaBand from '../../../components/CtaBand.astro';
 import JobCard from '../../../components/JobCard.astro';
-import { getStaticLangPaths, localePath, useT, type Lang } from '../../../i18n';
+import { langPathsIf } from '../../../lib/features';
+import { localePath, useT, type Lang } from '../../../i18n';
 import { getJobs } from '../../../i18n/content';
 import { breadcrumbs } from '../../../lib/schema';
 
-export const getStaticPaths = getStaticLangPaths;
+export const getStaticPaths = langPathsIf('jobs');
 const lang = Astro.params.lang as Lang;
 const t = useT(lang);
 const j = t.jobs;

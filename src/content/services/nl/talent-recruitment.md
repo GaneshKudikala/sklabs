@@ -4,6 +4,7 @@ summary: Vaste plaatsing, contract- en freelancespecialisten en teamversterking 
 seoDescription: Huur cloud-, DevOps-, SRE-, security- en data/AI-engineers in Nederland in. Werving en selectie, contract- en freelancespecialisten en teamversterking, met technische screening door engineers.
 icon: users
 order: 6
+requires: hire
 draft: true
 problem: Goede cloud- en securityengineers vinden kost maanden, generieke recruiters begrijpen het werk niet en projecten kunnen niet altijd wachten op de juiste persoon.
 whatWeDo:

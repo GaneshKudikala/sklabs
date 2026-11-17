@@ -12,7 +12,7 @@ The content on sklabs.nl is for general information and is not an offer or profe
 
 ## Intellectual property
 
-Site content, logos and designs belong to [LEGAL_NAME] unless stated otherwise. Do not copy or reuse them without permission.
+Site content, logos and designs belong to SK Software Solutions unless stated otherwise. Do not copy or reuse them without permission.
 
 ## Links
 

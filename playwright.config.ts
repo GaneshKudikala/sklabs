@@ -9,7 +9,8 @@ export default defineConfig({
   reporter: process.env.CI ? 'github' : 'list',
   use: { baseURL: 'http://localhost:4322' },
   webServer: {
-    command: 'INCLUDE_SAMPLE_JOBS=true pnpm build && pnpm preview --port 4322 --ignore-lock',
+    command:
+      'FEATURES_ALL=true INCLUDE_SAMPLE_JOBS=true pnpm build && pnpm preview --port 4322 --ignore-lock',
     url: 'http://localhost:4322/en/',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

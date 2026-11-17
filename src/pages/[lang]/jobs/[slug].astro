@@ -5,11 +5,13 @@ import Section from '../../../components/Section.astro';
 import CtaBand from '../../../components/CtaBand.astro';
 import JobCard from '../../../components/JobCard.astro';
 import Icon from '../../../components/Icon.astro';
+import { features } from '../../../lib/features';
 import { locales, localePath, useT, type Lang } from '../../../i18n';
 import { getJobs, formatSalary } from '../../../i18n/content';
 import { breadcrumbs, isPlaceholder, jobPosting } from '../../../lib/schema';
 
 export async function getStaticPaths() {
+  if (!features.jobs) return [];
   const paths = [];
   for (const lang of locales) {
     const all = await getJobs(lang, { includeClosed: true });

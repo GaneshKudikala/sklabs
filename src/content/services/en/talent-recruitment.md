@@ -4,6 +4,7 @@ summary: Permanent placement, contract and freelance specialists, and team augme
 seoDescription: Hire cloud, DevOps, SRE, security and data/AI engineers in the Netherlands. Permanent recruitment, contract and freelance specialists and team augmentation, with technical screening by engineers.
 icon: users
 order: 6
+requires: hire
 problem: Hiring good cloud and security engineers takes months, generic recruiters do not understand the work, and projects cannot always wait for the right person.
 whatWeDo:
   - Permanent placement of engineers and engineering leads

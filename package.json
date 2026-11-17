@@ -19,7 +19,8 @@
     "test:unit": "vitest run",
     "dev:functions": "pnpm build && wrangler pages dev dist",
     "check:functions": "tsc -p functions/tsconfig.json",
-    "lint:jobs": "node scripts/lint-jobs.mjs"
+    "lint:jobs": "node scripts/lint-jobs.mjs",
+    "check:hidden": "node scripts/check-hidden.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

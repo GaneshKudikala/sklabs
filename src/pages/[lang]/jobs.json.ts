@@ -1,8 +1,10 @@
 import type { APIContext } from 'astro';
+import { features } from '../../lib/features';
 import { locales, localePath, type Lang } from '../../i18n';
 import { getJobs } from '../../i18n/content';
 
-export const getStaticPaths = () => locales.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = () =>
+  features.jobs ? locales.map((lang) => ({ params: { lang } })) : [];
 
 /** Open roles as JSON for job boards and LinkedIn sharing. Closed and sample roles are excluded. */
 export async function GET(context: APIContext) {
