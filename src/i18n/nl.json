@@ -27,7 +27,8 @@
     "terms": "Voorwaarden",
     "imprint": "Colofon",
     "rights": "Alle rechten voorbehouden.",
-    "analytics": "Cookieloze analytics. Geen trackers."
+    "analytics": "Cookieloze analytics. Geen trackers.",
+    "mainEstablishment": "Hoofdvestiging"
   },
   "home": {
     "title": "Cloud-, DevOps-, security- en AI-engineering",
@@ -37,7 +38,7 @@
     "ctaPrimary": "Plan een gesprek",
     "ctaSecondary": "Bekijk diensten",
     "servicesTitle": "Wat we doen",
-    "servicesLead": "Specialismen die de hele cloud-levenscyclus dekken, van fundament tot AI, plus consultants bij jou op locatie.",
+    "servicesLead": "Specialismen die de hele cloud-levenscyclus dekken, van fundament tot AI.",
     "learnMore": "Lees meer",
     "cloudsTitle": "Multi-cloud uit ervaring",
     "cloudsLead": "We werken op alle grote publieke clouds.",

@@ -27,7 +27,8 @@
     "terms": "Terms",
     "imprint": "Imprint",
     "rights": "All rights reserved.",
-    "analytics": "Cookieless analytics. No trackers."
+    "analytics": "Cookieless analytics. No trackers.",
+    "mainEstablishment": "main establishment"
   },
   "home": {
     "title": "Cloud, DevOps, security and AI engineering",
@@ -37,7 +38,7 @@
     "ctaPrimary": "Book a call",
     "ctaSecondary": "Explore services",
     "servicesTitle": "What we do",
-    "servicesLead": "Practices that cover the cloud lifecycle, from foundation to AI, plus consultants placed at your site.",
+    "servicesLead": "Practices that cover the cloud lifecycle, from foundation to AI.",
     "learnMore": "Learn more",
     "cloudsTitle": "Multi-cloud by experience",
     "cloudsLead": "We work across the major public clouds.",

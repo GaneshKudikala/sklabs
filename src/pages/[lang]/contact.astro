@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import site from '../../content/site.json';
+import { features } from '../../lib/features';
 import { getStaticLangPaths, localePath, useT, type Lang } from '../../i18n';
 import { getServices } from '../../i18n/content';
 
@@ -87,7 +88,7 @@ const label = 'block text-sm font-semibold text-ink-950';
             {services.map((s) => (
               <option value={s.slug}>{s.data.title}</option>
             ))}
-            <option value="job-application">{c.interestJob}</option>
+            {features.jobs && <option value="job-application">{c.interestJob}</option>}
             <option value="other">{c.interestOther}</option>
           </select>
         </div>

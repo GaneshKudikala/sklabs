@@ -14,6 +14,7 @@ const services = defineCollection({
     icon: z.enum(['cloud', 'life-buoy', 'workflow', 'shield-check', 'bot', 'users']),
     order: z.number(),
     draft: z.boolean().default(false),
+    requires: z.enum(['jobs', 'hire', 'products']).optional(), // hidden while that feature is off
     problem: z.string(),
     whatWeDo: z.array(z.string()),
     deliverables: z.array(z.string()),

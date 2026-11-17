@@ -8,7 +8,7 @@ _Draft for legal review before publication._
 
 ## Who we are
 
-[LEGAL_NAME], KVK [KVK], [ADDRESS] ("SK LABS", "we"). Contact: [CONTACT_EMAIL].
+SK Software Solutions, KVK 42206723, [ADDRESS] ("SK LABS", "we"). Contact: [CONTACT_EMAIL].
 
 ## What we collect
 

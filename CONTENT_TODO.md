@@ -35,3 +35,9 @@ All NL files carry `draft: true` and show a "draft translation" notice. For each
 Placing consultants at customer sites can fall under Dutch staffing rules (detachering vs. uitzenden, Wet DBA / false self-employment, ABU/NBBU, WAADI registration, VAR/DBA for freelancers, payrolling). Confirm with an adviser which model you operate, and make the service page and job postings match it. The privacy policy also needs a section on candidate data (CVs and application emails) with a retention period.
 
 - Recruitment registration/licence line in the imprint (planned with the legal pages update) and a candidate-privacy section (4 weeks retention, or 12 months with consent)
+
+## Company details to confirm
+
+- The imprint says the legal name is SK Software Solutions and that it trades as SK LABS. Confirm SK LABS is a registered trade name (handelsnaam) in the KVK extract, or tell me the correct wording.
+- Add the vestigingsnummer (establishment number) and the registered address from the KVK extract if you want them shown.
+- Jobs, Hire Talent and Products are switched off in `src/content/site.json`; the recruitment licence line and candidate-privacy section are needed before turning on Jobs or Hire.

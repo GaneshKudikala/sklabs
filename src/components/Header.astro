@@ -2,6 +2,7 @@
 import Wordmark from './Wordmark.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { localePath, useT, type Lang } from '../i18n';
+import { features } from '../lib/features';
 
 interface Props {
   lang: Lang;
@@ -13,9 +14,9 @@ const t = useT(lang);
 
 const links = [
   { href: localePath(lang, 'services'), label: t.nav.services },
-  { href: localePath(lang, 'jobs'), label: t.nav.jobs },
-  { href: localePath(lang, 'hire'), label: t.nav.hire },
-  { href: localePath(lang, 'products'), label: t.nav.products },
+  ...(features.jobs ? [{ href: localePath(lang, 'jobs'), label: t.nav.jobs }] : []),
+  ...(features.hire ? [{ href: localePath(lang, 'hire'), label: t.nav.hire }] : []),
+  ...(features.products ? [{ href: localePath(lang, 'products'), label: t.nav.products }] : []),
   ...(showWork ? [{ href: localePath(lang, 'work'), label: t.nav.work }] : []),
   { href: localePath(lang, 'about'), label: t.nav.about },
   { href: localePath(lang, 'insights'), label: t.nav.insights },

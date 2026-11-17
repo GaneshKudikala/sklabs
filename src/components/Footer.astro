@@ -1,6 +1,8 @@
 ---
 import Wordmark from './Wordmark.astro';
 import { localePath, useT, type Lang } from '../i18n';
+import { features } from '../lib/features';
+import site from '../content/site.json';
 
 interface Props {
   lang: Lang;
@@ -12,9 +14,9 @@ const year = new Date().getFullYear();
 
 const company = [
   { href: localePath(lang, 'services'), label: t.nav.services },
-  { href: localePath(lang, 'jobs'), label: t.nav.jobs },
-  { href: localePath(lang, 'hire'), label: t.nav.hire },
-  { href: localePath(lang, 'products'), label: t.nav.products },
+  ...(features.jobs ? [{ href: localePath(lang, 'jobs'), label: t.nav.jobs }] : []),
+  ...(features.hire ? [{ href: localePath(lang, 'hire'), label: t.nav.hire }] : []),
+  ...(features.products ? [{ href: localePath(lang, 'products'), label: t.nav.products }] : []),
   ...(showWork ? [{ href: localePath(lang, 'work'), label: t.nav.work }] : []),
   { href: localePath(lang, 'about'), label: t.nav.about },
   { href: localePath(lang, 'insights'), label: t.nav.insights },
@@ -64,9 +66,12 @@ const legal = [
     </nav>
   </div>
   <div class="border-t border-ink-950/10">
-    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-ink-500 sm:flex-row sm:justify-between sm:px-6">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-ink-500 md:flex-row md:justify-between sm:px-6">
       <p>
         © {year} SK LABS. {t.footer.rights}
+      </p>
+      <p>
+        {site.legalName} · KVK {site.kvk} ({t.footer.mainEstablishment})
       </p>
       <p>{t.footer.analytics}</p>
     </div>

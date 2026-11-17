@@ -13,7 +13,7 @@ De inhoud van sklabs.nl is algemene informatie en geen aanbod of professioneel a
 
 ## Intellectueel eigendom
 
-Inhoud, logo's en ontwerpen van de site zijn eigendom van [LEGAL_NAME] tenzij anders vermeld. Kopieer of hergebruik ze niet zonder toestemming.
+Inhoud, logo's en ontwerpen van de site zijn eigendom van SK Software Solutions tenzij anders vermeld. Kopieer of hergebruik ze niet zonder toestemming.
 
 ## Links
 

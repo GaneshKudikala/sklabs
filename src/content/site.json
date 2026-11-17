@@ -1,4 +1,12 @@
 {
+  "legalName": "SK Software Solutions",
+  "tradeName": "SK LABS",
+  "kvk": "42206723",
   "contactEmail": "[CONTACT_EMAIL]",
-  "calLink": "[CAL_LINK]"
+  "calLink": "[CAL_LINK]",
+  "features": {
+    "jobs": false,
+    "hire": false,
+    "products": false
+  }
 }

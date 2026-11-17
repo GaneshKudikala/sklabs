@@ -1,9 +1,11 @@
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
+import { features } from '../../../lib/features';
 import { locales, localePath, useT, type Lang } from '../../../i18n';
 import { getJobs } from '../../../i18n/content';
 
-export const getStaticPaths = () => locales.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = () =>
+  features.jobs ? locales.map((lang) => ({ params: { lang } })) : [];
 
 export async function GET(context: APIContext) {
   const lang = context.params.lang as Lang;
